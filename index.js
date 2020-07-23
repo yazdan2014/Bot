@@ -177,7 +177,7 @@ client.on('message' , (message) => {
                 
             }else{
                 message.delete();
-                message.channel.send( "ندارد  لطفا فایل خود را با فرمت مورد نظر ارسال کنید "+ " pdf " + " فایل شما فرمت " + "\n <@" + message.author.id + ">")
+                message.channel.send( " فایل شما فرمت pdf ندارد،" + "\n <@" + message.author.id + ">")
                .then( msg => {
                 msg.delete({timeout : 10000});
               })
