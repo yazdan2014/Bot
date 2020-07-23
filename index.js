@@ -42,8 +42,7 @@ client.on('message' , (message) => {
                     message.react('9️⃣'),
                     message.react('🔟'),
                 ])
-                    .catch(() => console.error(' either emojies couldn not be loaded or they voted before all the emojies were sent'));
-            
+                    .catch(() => message.delete() , message.channel.send("لطفا دوباره امتحان کنید") .then(msg => msg.delete({timeout:5000})))
 
                 const filter = (reaction, user) => {
                 return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id;
@@ -164,6 +163,7 @@ client.on('message' , (message) => {
                           })
 
                     }
+                    
                 })
                 .catch(collected => {
                     message.send('بعد از 60 ثانیه ، انتخابی انجام نشد!!').then( msg => message.delete({timeout : 10000} ) , message.delete({timeout : 1000}));
