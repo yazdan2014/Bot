@@ -166,9 +166,7 @@ client.on('message' , (message) => {
                     }
                     
                 })
-                .catch(collected => 
-                    message.delete() , message.channel.send("لطفا دوباره امتحان کنید") .then(msg => msg.delete({timeout:5000})
-                ))
+                
 
 
 
