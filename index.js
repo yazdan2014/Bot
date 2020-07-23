@@ -42,7 +42,7 @@ client.on('message' , (message) => {
                     message.react('9️⃣'),
                     message.react('🔟'),
                 ])
-                    .catch(() => message.delete() , message.channel.send("لطفا دوباره امتحان کنید") .then(msg => msg.delete({timeout:5000})))
+                    
 
                 const filter = (reaction, user) => {
                 return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id;
