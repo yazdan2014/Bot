@@ -59,7 +59,7 @@ client.on('message' , (message) => {
                         .then( () => {
                             message.delete({timeout : 1000});
                           })
-                        message.channel.send( "!!" + "تکلیف حسابان شما ثبت شد ")
+                        message.channel.send( "!!" + "تکلیف حسابان شما ثبت شد " + "\n <@" + message.author.id + ">")
                         .then( message => {
                             message.delete({timeout : 10000});
                           })
@@ -70,7 +70,7 @@ client.on('message' , (message) => {
                         .then( () => {
                             message.delete({timeout : 1000});
                           })
-                        message.channel.send( "!!" + "تکلیف فیزیک شما ثبت شد ")
+                        message.channel.send( "!!" + "تکلیف فیزیک شما ثبت شد " + "\n <@" + message.author.id + ">")
                         .then( message => {
                             message.delete({timeout : 10000});
                           })
@@ -81,7 +81,7 @@ client.on('message' , (message) => {
                         .then( () => {
                             message.delete({timeout : 1000});
                           })
-                        message.channel.send( "!!" + "تکلیف هندسه شما ثبت شد ")
+                        message.channel.send( "!!" + "تکلیف هندسه شما ثبت شد " + "\n <@" + message.author.id + ">")
                         .then( message => {
                             message.delete({timeout : 10000});
                           })
@@ -92,7 +92,7 @@ client.on('message' , (message) => {
                         .then( () => {
                             message.delete({timeout : 1000});
                           })
-                        message.channel.send( "!!" + "تکلیف شیمی شما ثبت شد ")
+                        message.channel.send( "!!" + "تکلیف شیمی شما ثبت شد " + "\n <@" + message.author.id + ">")
                         .then( message => {
                             message.delete({timeout : 10000});
                           })
@@ -103,7 +103,7 @@ client.on('message' , (message) => {
                         .then( () => {
                             message.delete({timeout : 1000});
                           })
-                        message.channel.send( "!!" + "تکلیف زمین شناسی شما ثبت شد ")
+                        message.channel.send( "!!" + "تکلیف زمین شناسی شما ثبت شد " + "\n <@" + message.author.id + ">")
                         .then( message => {
                             message.delete({timeout : 10000});
                           })
@@ -114,7 +114,7 @@ client.on('message' , (message) => {
                         .then( () => {
                             message.delete({timeout : 1000});
                           })
-                        message.channel.send( "!!" + "تکلیف آمار و احتمال شما ثبت شد ")
+                        message.channel.send( "!!" + "تکلیف آمار و احتمال شما ثبت شد " + "\n <@" + message.author.id + ">") 
                         .then( message => {
                             message.delete({timeout : 10000});
                           })
@@ -125,7 +125,7 @@ client.on('message' , (message) => {
                         .then( () => {
                             message.delete({timeout : 1000});
                           })
-                        message.channel.send( "!!" + "تکلیف عربی شما ثبت شد ")
+                        message.channel.send( "!!" + "تکلیف عربی شما ثبت شد " + "\n <@" + message.author.id + ">")
                         .then( message => {
                             message.delete({timeout : 10000});
                           })
@@ -136,7 +136,7 @@ client.on('message' , (message) => {
                         .then( () => {
                             message.delete({timeout : 1000});
                           })
-                        message.channel.send( "!!" + "تکلیف زبان شما ثبت شد ")
+                        message.channel.send( "!!" + "تکلیف زبان شما ثبت شد " + "\n <@" + message.author.id + ">")
                         .then( message => {
                             message.delete({timeout : 10000});
                           })
@@ -147,7 +147,7 @@ client.on('message' , (message) => {
                         .then( () => {
                             message.delete({timeout : 1000});
                           })
-                        message.channel.send( "!!" + "تکلیف دینی شما ثبت شد ")
+                        message.channel.send( "!!" + "تکلیف دینی شما ثبت شد " + "\n <@" + message.author.id + ">")
                         .then( message => {
                             message.delete({timeout : 10000});
                           })
@@ -158,7 +158,7 @@ client.on('message' , (message) => {
                         .then( () => {
                             message.delete({timeout : 1000});
                           })
-                        message.channel.send( "!!" + "تکلیف ادبیات شما ثبت شد ")
+                        message.channel.send( "!!" + "تکلیف ادبیات شما ثبت شد " + "\n <@" + message.author.id + ">")
                         .then( message => {
                             message.delete({timeout : 10000});
                           })
@@ -166,7 +166,7 @@ client.on('message' , (message) => {
                     }
                 })
                 .catch(collected => {
-                    message.reply('بعد از 60 ثانیه ، انتخابی انجام نشد!!').then(() => message.delete({timeout : 10000}));
+                    message.send('بعد از 60 ثانیه ، انتخابی انجام نشد!!').then( msg => message.delete({timeout : 10000} ) , message.delete({timeout : 1000}));
                 });
 
 
@@ -176,7 +176,7 @@ client.on('message' , (message) => {
                 
             }else{
                 message.delete();
-                message.channel.send("You've **NOT** sent a pdf file ! \n Please send a valid PDF file " + " <@" + message.author.id + ">")
+                message.channel.send( "ندارد  لطفا فایل خود را با فرمت مورد نظر ارسال کنید "+ " pdf " + " فایل شما فرمت " + "\n <@" + message.author.id + ">")
                .then( msg => {
                 msg.delete({timeout : 10000});
               })
@@ -226,6 +226,7 @@ client.on('message' , (message) => {
             }
             
     } 
+
     
 
 
