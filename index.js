@@ -40,7 +40,6 @@ client.on('message' , (message) => {
             .then(() => message.react('8️⃣'))
             .then(() => message.react('9️⃣'))
             .then(() => message.react('🔟'))
-			.catch(() => message.delete() , message.channel.send('لطفا دوباره امتحان کنید') .then(msg => msg.delete({timeout:5000})))
                     
 
                 const filter = (reaction, user) => {
