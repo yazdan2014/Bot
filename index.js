@@ -30,18 +30,17 @@ client.on('message' , (message) => {
                 const adabiat = client.channels.cache.get('735060837173297174');
 
 
-                Promise.all([
-                    message.react('1️⃣'),
-                    message.react('2️⃣'),
-                    message.react('3️⃣'),
-                    message.react('4️⃣'),
-                    message.react('5️⃣'),
-                    message.react('6️⃣'),
-                    message.react('7️⃣'),
-                    message.react('8️⃣'),
-                    message.react('9️⃣'),
-                    message.react('🔟'),
-                ])
+                message.react('1️⃣')
+			.then(() => message.react('2️⃣'))
+            .then(() => message.react('3️⃣'))
+            .then(() => message.react('4️⃣'))
+            .then(() => message.react('5️⃣'))
+            .then(() => message.react('6️⃣'))
+            .then(() => message.react('7️⃣'))
+            .then(() => message.react('8️⃣'))
+            .then(() => message.react('9️⃣'))
+            .then(() => message.react('🔟'))
+			.catch(() => message.delete() , message.channel.send('لطفا دوباره امتحان کنید') .then(msg => msg.delete({timeout:5000})))
                     
 
                 const filter = (reaction, user) => {
