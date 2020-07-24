@@ -22,7 +22,7 @@ client.on('message' , (message) => {
                 const physics = client.channels.cache.get('735059090119852062');
                 const hendese = client.channels.cache.get('735059500981157929');
                 const shimi   = client.channels.cache.get('735058434998665267');
-                const zamin   = client.channels.cache.get('735059673883082794');
+                const zist   =  client.channels.cache.get('735059673883082794');
                 const amar    = client.channels.cache.get('735060608579403779');
                 const arabi   = client.channels.cache.get('735060723218251836');
                 const zaban   = client.channels.cache.get('735060758941139005');
@@ -99,11 +99,11 @@ client.on('message' , (message) => {
 
                     }else if(reaction.emoji.name === '5️⃣'){ 
 
-                        zamin.send(message.attachments.first())
+                        zist.send(message.attachments.first())
                         .then( () => {
                             message.delete({timeout : 1000});
                           })
-                        message.channel.send( "!!" + "تکلیف زمین شناسی شما ثبت شد " + "\n <@" + message.author.id + ">")
+                        message.channel.send( "!!" + "تکلیف زیست شما ثبت شد " + "\n <@" + message.author.id + ">")
                         .then( message => {
                             message.delete({timeout : 10000});
                           })
