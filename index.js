@@ -234,11 +234,16 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
     let newUserChannel = newMember.member.voice.channelID
     let oldUserChannel = oldMember.member.voice.channelID
   
-  
-     if(newUserChannel === "733247185331945504" && newMember){
-        
+    if(oldUserChannel === undefined && newUserChannel !== undefined) {
+        if(newUserChannel === "733247185331945504"){
         newMember.member.voice.setMute(true);
-        client.channels.cache.get('735535208090042469').send("sik kard")
-  
-    }
+        client.channels.cache.get('735535208090042469').send("umad")
+        // User Joins a voice channel
+        }
+     } else if(newUserChannel === undefined){
+   
+       // User leaves a voice channel
+   
+     }
+     
   })
