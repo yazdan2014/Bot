@@ -231,12 +231,11 @@ client.on('message' , (message) => {
 client.login(process.env.token);
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {
-    let newUserChannel = newMember.member.voice.channel
-    let oldUserChannel = oldMember.member.voice.channel
-    let newUserChannelId = newMember.member.voice.channelID
+    let newUserChannel = newMember.member.voice.channelID
+    let oldUserChannel = oldMember.member.voice.channelID
   
     if(oldUserChannel === undefined && newUserChannel !== undefined) {
-        if(newUserChannelId === "733247185331945504"){
+        if(newUserChannel === "733247185331945504"){
         newMember.member.voice.setMute(true);
         client.channels.cache.get('735535208090042469').send("umad")
         // User Joins a voice channel
