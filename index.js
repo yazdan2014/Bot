@@ -235,13 +235,10 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
     let oldUserChannel = oldMember.member.voice.channelID
   
   
-    if(oldUserChannel === "733247185331945504" && newUserChannel !== "733247185331945504") {
+     if(newUserChannel === "733247185331945504" && newMember){
         
-       newMember.member.voice.setMute(true)
-  
-    } else if(newUserChannel === "733247185331945504"){
-  
-      client.channels.cache.get('735535208090042469').send("sik kard")
+        newMember.member.voice.setMute(true);
+        client.channels.cache.get('735535208090042469').send("sik kard")
   
     }
   })
