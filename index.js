@@ -206,12 +206,15 @@ client.on('message' , (message) => {
                         const reaction = collected.first();
 
                         if (reaction.emoji.name === '👍') {
-                            message.reply('دانش آموز اجازه ی حرف زدن گرفت ');
-                            message.member.voice.setMute(true);
+                            message.member.voice.setMute(false);
+                            message.send( "<@" + message.author.id + '>' +' اجازه ی حرف زدن گرفت ');
+                            if(message.member.voice.selfMute === true){
+                                message.member.voice.setMute(false);
+                            }
                             
                         } else if(reaction.emoji.name === '👎'){ 
                             message.reply('دانش آموز اجازه ی حرف زدن را از دست داد ');
-                            message.member.voice.setMute(false);
+                            message.member.voice.setMute(true);
                         }
                     })
                     
