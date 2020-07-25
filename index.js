@@ -198,7 +198,7 @@ client.on('message' , (message) => {
                 message.react('👍').then(() => message.react('👎'));
 
             const filter = (reaction, user) => {
-	            return ['👍', '👎'].includes(reaction.emoji.name) && user.id !== "464128895684182016";
+	            return ['👍', '👎'].includes(reaction.emoji.name) && user.id === "464128895684182016";
                 };
 
                 message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
