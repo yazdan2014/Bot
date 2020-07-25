@@ -207,11 +207,11 @@ client.on('message' , (message) => {
 
                         if (reaction.emoji.name === '👍') {
                             message.reply('دانش آموز اجازه ی حرف زدن گرفت ');
-                            message.member.voice.serverMute(true);
+                            message.member.voice.serverMute = true;
                             
                         } else if(reaction.emoji.name === '👎'){ 
                             message.reply('دانش آموز اجازه ی حرف زدن را از دست داد ');
-                            message.member.voice.serverMute(false);
+                            message.member.voice.serverMute = false;
                         }
                     })
                     
