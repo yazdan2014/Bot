@@ -231,8 +231,8 @@ client.on('message' , (message) => {
 client.login(process.env.token);
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {
-    let newUserChannel = newMember.member.voice
-    let oldUserChannel = oldMember.member.voice
+    let newUserChannel = newMember.member.voice.channel
+    let oldUserChannel = oldMember.member.voice.channel
     let newUserChannelId = newMember.member.voice.channelID
   
     if(oldUserChannel === undefined && newUserChannel !== undefined) {
