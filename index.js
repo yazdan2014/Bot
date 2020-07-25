@@ -166,10 +166,6 @@ client.on('message' , (message) => {
                 })
                 
 
-
-
-
-                    
                 
             }else{
                 message.delete();
@@ -197,12 +193,12 @@ client.on('message' , (message) => {
 
 
 
-    } else if(message.channel.id === '735059815193247794'){
+    } else if(message.channel.id === '735535208090042469'){
             if(message.content === "!per"){
                 message.react('👍').then(() => message.react('👎'));
 
             const filter = (reaction, user) => {
-	            return ['👍', '👎'].includes(reaction.emoji.name) && user.id !== "733375548553953373";
+	            return ['👍', '👎'].includes(reaction.emoji.name) && user.id !== "464128895684182016";
                 };
 
                 message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
@@ -211,15 +207,14 @@ client.on('message' , (message) => {
 
                         if (reaction.emoji.name === '👍') {
                             message.reply('دانش آموز اجازه ی حرف زدن گرفت ');
-                            message.member.roles.add('735205221608718386');
+                            message.member.voice.mute(false);
+                            
                         } else if(reaction.emoji.name === '👎'){ 
                             message.reply('دانش آموز اجازه ی حرف زدن را از دست داد ');
-                            message.member.roles.remove('735205221608718386');
+                            message.member.voice.mute(true);
                         }
                     })
-                    .catch(collected => {
-                        message.reply('you reacted with neither a thumbs up, nor a thumbs down.');
-                    });
+                    
             }
             
     } 
