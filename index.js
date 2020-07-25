@@ -207,13 +207,11 @@ client.on('message' , (message) => {
 
                         if (reaction.emoji.name === '👍') {
                             message.member.voice.setMute(false);
-                            message.send( "<@" + message.author.id + '>' +' اجازه ی حرف زدن گرفت ');
-                            if(message.member.voice.selfMute === true){
-                                message.member.voice.setMute(false);
-                            }
+                            message.channel.send( "<@" + message.author.id + '>' +'** اجازه ی حرف زدن گرفت **');
+                            
                             
                         } else if(reaction.emoji.name === '👎'){ 
-                            message.reply('دانش آموز اجازه ی حرف زدن را از دست داد ');
+                            message.channel.send("<@" + message.author.id + '>' +'** اجازه ی حرف زدن را از دست داد **');
                             message.member.voice.setMute(true);
                         }
                     })
@@ -232,3 +230,18 @@ client.on('message' , (message) => {
 
 client.login(process.env.token);
 
+client.on('voiceStateUpdate', (oldMember, newMember) => {
+    let newUserChannel = newMember.member.voice.channelID
+    let oldUserChannel = oldMember.member.voice.channelID
+  
+  
+    if(oldUserChannel === "733247185331945504" && newUserChannel !== "733247185331945504") {
+        
+       newMember.member.voice.setMute(true)
+  
+    } else if(newUserChannel === "733247185331945504"){
+  
+      client.channels.cache.get('735535208090042469').send("sik kard")
+  
+    }
+  })
