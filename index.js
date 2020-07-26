@@ -230,17 +230,17 @@ client.on('message' , (message) => {
 
 client.login(process.env.token);
 
-client.on('voiceStateUpdate', (oldState, newState) => {
+client.on('voiceStateUpdate', async (oldState, newState) => {
     let newUserChannel = newState.channel
     let oldUserChannel = oldState.channel
   
-    if(oldUserChannel === undefined && newUserChannel !== undefined) {
+    if(!oldUserChannel && newUserChannel) {
         
         newMember.member.voice.setMute(true);
         client.channels.cache.get('735535208090042469').send("umad")
         // User Joins a voice channel
         
-     } else if(newUserChannel === undefined){
+     } else if(newUserChannel){
    
        // User leaves a voice channel
    
