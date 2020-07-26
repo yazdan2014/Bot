@@ -242,7 +242,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
 
             }else if(newUserChannel === "735540944635691129"){
                 console.log('someone joined a VC');
-                newState.member.voice.setMute(true)
+                newState.member.voice.setMute(false)
                 // User Joins the voice channel
             }
         
