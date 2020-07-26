@@ -237,7 +237,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
         if(oldUserChannel === null || oldUserChannel === undefined){
             if(newUserChannel === "733247185331945504"){
                 //User Joins the class voice channel
-                client.channels.cache.get('735059857710907533').send(newState.member.nickname + " وارد کلاس شد ")
+                client.channels.cache.get('735535208090042469').send(newState.member.nickname + " وارد کلاس شد ")
                 newState.member.voice.setMute(true)
             }
             if(newUserChannel === "735540944635691129"){
@@ -249,7 +249,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
      }else{
          if(oldUserChannel === "733247185331945504"){
              //User Leaves the class voice channel
-             client.channels.cache.get('735059857710907533').send(newState.member.nickname + " از کلاس شد خارج شد ")
+             client.channels.cache.get('735535208090042469').send(newState.member.nickname + " از کلاس شد خارج شد ")
          }
      }
      
