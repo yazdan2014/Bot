@@ -239,6 +239,11 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
                 client.channels.cache.get('735535208090042469').send(newState.member.nickname + " وارد کلاس شد ")
                 newState.member.voice.setMute(true)
                 // User Joins the voice channel
+
+            }else if(newUserChannel === "735540944635691129"){
+                console.log('someone joined a VC');
+                newState.member.voice.setMute(true)
+                // User Joins the voice channel
             }
         
       } else if (newUserChannel !== oldUserChannel ){
