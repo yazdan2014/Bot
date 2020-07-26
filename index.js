@@ -231,6 +231,7 @@ client.on('message' , (message) => {
 client.login(process.env.token);
 
 client.on('voiceStateUpdate', async (oldState, newState) => {
+    console.log(newUserChannel, oldUserChannel)
     let newUserChannel = newState.channelID
     let oldUserChannel = oldState.channelID
     console.log('henlo')
