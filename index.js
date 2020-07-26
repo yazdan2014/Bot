@@ -233,32 +233,19 @@ client.login(process.env.token);
 client.on('voiceStateUpdate', async (oldState, newState) => {
     let newUserChannel = newState.channelID
     let oldUserChannel = oldState.channelID
-    if(newUserChannel !== null && oldUserChannel === undefined) {
-        if(newUserChannel === "733247185331945504"){
-            client.channels.cache.get('735535208090042469').send(newState.member.nickname + " وارد کلاس شد ")
-            newState.member.voice.setMute(true)
-            // User Joins the voice channel
-
-        }else if(newUserChannel === "735540944635691129"){
-            newState.member.voice.setMute(false)
-            // User Joins gapogoft channel
-        }
-        
-    }else if(newUserChannel !== null && oldUserChannel === null){
-        if(newUserChannel === "733247185331945504"){
-            client.channels.cache.get('735535208090042469').send(newState.member.nickname + "   برای اولین بار وارد کلاس شد")
-            newState.member.voice.setMute(true)
-            // User Joins the voice channel
-
-        }else if(newUserChannel === "735540944635691129"){
-            newState.member.voice.setMute(false)
-            // User Joins gapo goft channel
-        }
-    }else if (newUserChannel !== oldUserChannel ){
+     if (newUserChannel !== oldUserChannel ){
             if(oldUserChannel === "733247185331945504"){
                 client.channels.cache.get('735535208090042469').send( newState.member.nickname + " از کلاس خارج شد ")
                 // User Leaves the voice channel
-            }
+            }else if(newUserChannel === "733247185331945504"){
+                client.channels.cache.get('735535208090042469').send(newState.member.nickname + " وارد کلاس شد ")
+                newState.member.voice.setMute(true)
+                // User Joins the voice channel
+    
+            }else if(newUserChannel === "735540944635691129"){
+                newState.member.voice.setMute(false)
+                // User Joins gapogoft channel
+            }     
      }
      
   })
