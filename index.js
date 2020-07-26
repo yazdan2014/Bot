@@ -198,13 +198,12 @@ client.on('message' , (message) => {
                 message.react('👍').then(() => message.react('👎'));
 
             const filter = (reaction, user) => {
-	            return ['👍', '👎'].includes(reaction.emoji.name) && user.id === "464128895684182016";
+	            return ['👍', '👎'].includes(reaction.emoji.name) && message.member.roles.cache.has('735063970951462923');
                 };
 
                 message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
                     .then(collected => {
                         const reaction = collected.first();
-
                         if (reaction.emoji.name === '👍') {
                             message.member.voice.setMute(false);
                             message.channel.send( "<@" + message.author.id + '>' +'** اجازه ی حرف زدن گرفت **');
