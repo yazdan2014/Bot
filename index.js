@@ -231,8 +231,8 @@ client.on('message' , (message) => {
 client.login(process.env.token);
 
 client.on('voiceStateUpdate', async (oldState, newState) => {
-    let newUserChannel = newState.channel
-    let oldUserChannel = oldState.channel
+    let newUserChannel = newState.channel.join()
+    let oldUserChannel = oldState.channel.join()
   
     if(!oldUserChannel && newUserChannel) {
         console.log('someone joined a VC');
