@@ -233,16 +233,19 @@ client.login(process.env.token);
 client.on('voiceStateUpdate', async (oldState, newState) => {
     let newUserChannel = newState.channelID
     let oldUserChannel = oldState.channelID
-    console.log(newUserChannel, oldUserChannel)
     if(newUserChannel !== null && (oldUserChannel === null || oldUserChannel==undefined)) {
-        console.log('someone joined a VC');
-        client.channels.cache.get('735535208090042469').send(newState.member.nickname + " وارد کلاس شد ")
-        newState.member.voice.setMute(true)
-        // User Joins a voice channel
+            if(newUserChannel === "733247185331945504"){
+                console.log('someone joined a VC');
+                client.channels.cache.get('735535208090042469').send(newState.member.nickname + " وارد کلاس شد ")
+                newState.member.voice.setMute(true)
+                // User Joins the voice channel
+            }
         
-     } else if (newUserChannel === null && oldUserChannel !== null){
-        client.channels.cache.get('735535208090042469').send( newState.member.nickname + " از کلاس خارج شد ")
-        
+      } else if (newUserChannel === null && oldUserChannel !== null){
+            if(oldUserChannel === "733247185331945504"){
+                client.channels.cache.get('735535208090042469').send( newState.member.nickname + " از کلاس خارج شد ")
+                // User Leaves the voice channel
+            }
      }
      
   })
