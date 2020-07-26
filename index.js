@@ -198,7 +198,7 @@ client.on('message' , (message) => {
                 message.react('👍').then(() => message.react('👎'));
 
             const filter = (reaction, user) => {
-	            return ['👍', '👎'].includes(reaction.emoji.name) && message.member.roles.cache.has('735063970951462923');
+	            return ['👍', '👎'].includes(reaction.emoji.name) && user.member.roles.cache.has('735063970951462923');
                 };
 
                 message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
