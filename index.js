@@ -234,7 +234,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     let newUserChannel = newState.channelID
     let oldUserChannel = oldState.channelID
      if (newUserChannel !== null ){
-        if(oldUserChannel === null || oldUserChannel === undefined){
+        if(oldUserChannel === null || oldUserChannel === undefined || newUserChannel !== oldUserChannel ){
             if(newUserChannel === "733247185331945504"){
                 //User Joins the class voice channel
                 client.channels.cache.get('735535208090042469').send(newState.member.nickname + " وارد کلاس شد ")
