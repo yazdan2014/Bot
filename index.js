@@ -233,19 +233,27 @@ client.login(process.env.token);
 client.on('voiceStateUpdate', async (oldState, newState) => {
     let newUserChannel = newState.channelID
     let oldUserChannel = oldState.channelID
-     if (newUserChannel !== oldUserChannel ){
-            if(oldUserChannel === "733247185331945504"){
-                client.channels.cache.get('735535208090042469').send( newState.member.nickname + " از کلاس خارج شد ")
-                // User Leaves the voice channel
-            }else if(newUserChannel === "733247185331945504"){
-                client.channels.cache.get('735535208090042469').send(newState.member.nickname + " وارد کلاس شد ")
+     if (newUserChannel !== null ){
+        if(oldUserChannel === null || oldUserChannel === undefined){
+            if(newUserChannel === "733247185331945504"){
+                //User Joins the class voice channel
+                client.channels.cache.get('735059857710907533').send(newState.member.nickname + " وارد کلاس شد ")
                 newState.member.voice.setMute(true)
-                // User Joins the voice channel
-    
-            }else if(newUserChannel === "735540944635691129"){
-                newState.member.voice.setMute(false)
-                // User Joins gapogoft channel
-            }     
+            }
+            if(newUserChannel === "735540944635691129"){
+                newState.member.voice.setMute(false);
+            }
+               
+        }
+
+     }else{
+         if(oldUserChannel === "733247185331945504"){
+             //User Leaves the class voice channel
+             client.channels.cache.get('735059857710907533').send(newState.member.nickname + " از کلاس شد خارج شد ")
+         }
      }
+     
+                
+     
      
   })
