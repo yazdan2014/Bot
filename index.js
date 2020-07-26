@@ -231,9 +231,9 @@ client.on('message' , (message) => {
 client.login(process.env.token);
 
 client.on('voiceStateUpdate', async (oldState, newState) => {
-    console.log(newUserChannel, oldUserChannel)
     let newUserChannel = newState.channelID
     let oldUserChannel = oldState.channelID
+    console.log(newUserChannel, oldUserChannel)
     console.log('henlo')
     if(newUserChannel === "733247185331945504" && oldUserChannel !== "733247185331945504") {
         console.log('someone joined a VC');
