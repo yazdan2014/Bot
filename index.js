@@ -194,7 +194,7 @@ client.on('message' , (message) => {
 
 
     } else if(message.channel.id === '735535208090042469'){
-            if(message.content === "!per"){
+            if(message.content === "دست"){
                 message.react('👍').then(() => message.react('👎'));
 
             const filter = (reaction, user) => {
