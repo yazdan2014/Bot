@@ -234,7 +234,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     let newUserChannel = newState.channelID
     let oldUserChannel = oldState.channelID
     console.log(newUserChannel, oldUserChannel)
-    if(newUserChannel !== null && oldUserChannel === null || undefined) {
+    if(newUserChannel !== null && (oldUserChannel === null || oldUserChannel==undefined)) {
         console.log('someone joined a VC');
         client.channels.cache.get('735535208090042469').send(newState.member.nickname + " وارد کلاس شد ")
         newState.member.voice.setMute(true)
