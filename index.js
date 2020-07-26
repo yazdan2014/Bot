@@ -242,7 +242,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
         
      } else if (newUserChannel === null && oldUserChannel !== null){
         client.channels.cache.get('735535208090042469').send( newState.member.nickname + " از کلاس خارج شد ")
-        newState.member.voice.setMute(true)
+        
      }
      
   })
