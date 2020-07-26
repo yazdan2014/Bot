@@ -235,7 +235,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     let oldUserChannel = oldState.channel
   
     if(!oldUserChannel && newUserChannel) {
-        
+        console.log('someone joined a VC');
         newMember.member.voice.setMute(true);
         client.channels.cache.get('735535208090042469').send("umad")
         // User Joins a voice channel
