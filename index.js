@@ -194,10 +194,10 @@ client.on('message' , (message) => {
 
     } else if(message.channel.id === '735535208090042469'){
             if(message.content === "دست" || message.content === "کیر" || message.content === "دسته خر" || message.content === "کس"){
-                message.react('🟩').then(() => message.react('🟥'));
+                message.react('✅').then(() => message.react('❌'));
 
             const filter = (reaction, user) => {
-	            return ['🟩', '🟥'].includes(reaction.emoji.name) && user.id === "464128895684182016";
+	            return ['✅', '❌'].includes(reaction.emoji.name) && user.id === "464128895684182016";
                 };
                 
                 message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
@@ -208,7 +208,7 @@ client.on('message' , (message) => {
                             message.member.voice.setMute(false);
                             message.channel.send( "<@" + message.author.id + '>' +'** اجازه ی حرف زدن گرفت **');
                             
-                        } else if(reaction.emoji.name === '🟥'){ 
+                        } else if(reaction.emoji.name === '❌'){ 
                             message.channel.send("<@" + message.author.id + '>' +'** اجازه ی حرف زدن را از دست داد **');
                             message.member.voice.setMute(true);
 
@@ -217,8 +217,6 @@ client.on('message' , (message) => {
                     
             }if (message.content==="کس"){
                 message.reply("کس نگو دیگه کونی خان")
-            }if(message.content === 'استاد'){
-                message.reply("خایه مال سگ گایید")
             }
             
     } 
