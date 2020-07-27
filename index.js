@@ -195,21 +195,21 @@ client.on('message' , (message) => {
 
     } else if(message.channel.id === '735535208090042469'){
             if(message.content === "دست"){
-                message.react('✅').then(() => message.react('⭕'));
+                message.react('\:white_check_mark:').then(() => message.react('\:x:'));
 
             const filter = (reaction, user) => {
-	            return ['✅', '⭕'].includes(reaction.emoji.name) && user.id === "464128895684182016";
+	            return ['\:white_check_mark:', '\:x:'].includes(reaction.emoji.name) && user.id === "464128895684182016";
                 };
                 
                 message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
                     .then(collected => {
                         const reaction = collected.first();
 
-                        if (reaction.emoji.name === '✅') {
+                        if (reaction.emoji.name === '\:white_check_mark:') {
                             message.member.voice.setMute(false);
                             message.channel.send( "<@" + message.author.id + '>' +'** اجازه ی حرف زدن گرفت **');
                             
-                        } else if(reaction.emoji.name === '⭕'){ 
+                        } else if(reaction.emoji.name === '\:x:'){ 
                             message.channel.send("<@" + message.author.id + '>' +'** اجازه ی حرف زدن را از دست داد **');
                             message.member.voice.setMute(true);
 
