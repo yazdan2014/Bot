@@ -214,9 +214,11 @@ client.on('message' , (message) => {
                             
                         }
                     })
-                    .then(message.deletable){
+                    .then(() =>{
+                     if(message.deletable){
                         message.delete();
-                    }
+                     }
+                    })
                     
             }if (message.content==="کس"){
                 message.reply("کس نگو دیگه کونی خان")
