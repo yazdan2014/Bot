@@ -204,7 +204,7 @@ client.on('message' , (message) => {
                     .then(collected => {
                         const reaction = collected.first();
 
-                        if (reaction.emoji.name === '🟩') {
+                        if (reaction.emoji.name === '✅') {
                             message.member.voice.setMute(false);
                             message.channel.send( "<@" + message.author.id + '>' +'** اجازه ی حرف زدن گرفت **');
                             
@@ -214,7 +214,7 @@ client.on('message' , (message) => {
 
                         }
                     }).catch(() => {
-                        message.delete({timeout : 1000});
+                        message.attachments.first().delete({timeout : 1000});
                     })
                     
             }if (message.content==="کس"){
