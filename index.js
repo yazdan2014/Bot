@@ -200,6 +200,8 @@ client.on('message' , (message) => {
 	            return ['✅', '❌'].includes(reaction.emoji.name) && user.id === "464128895684182016";
                 };
                 
+                message.delete({timeout:60000})
+
                 message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
                     .then(collected => {
                         const reaction = collected.first();
@@ -241,6 +243,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
 
         if(oldUserChannel === null || oldUserChannel === undefined || newUserChannel !== oldUserChannel ){
             //State changes on User joinning a voice channel
+
 
             if(newUserChannel === vc111){
                 //User Joins the class voice channel
