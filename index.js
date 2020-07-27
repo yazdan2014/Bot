@@ -217,7 +217,7 @@ client.on('message' , (message) => {
                     
             }if (message.content==="کس"){
                 message.reply("کس نگو دیگه کونی خان")
-            }if(message.contet === 'استاد'){
+            }if(message.content === 'استاد'){
                 message.reply("خایه مال سگ گایید")
             }
             
