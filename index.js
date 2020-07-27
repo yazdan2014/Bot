@@ -45,8 +45,9 @@ client.on('message' , (message) => {
                 return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === "464128895684182016";
                 };
 
+                message.delete({timeout:60000})
                 
-            message.awaitReactions(filter, { max: 1, time: 180000, errors: ['time'] })
+            message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
                 .then(collected => {
                     const reaction = collected.first();
 
@@ -160,6 +161,9 @@ client.on('message' , (message) => {
                             message.delete({timeout : 10000});
                           })
 
+                    }
+                    if(message.deleted){
+                        message.channel.send("<@" + message.author.id + ">" +"شماره ای انتخاب نشد ، لطفا دوباره تکلیف خود را ارسال کنید")
                     }
                     
                 })
