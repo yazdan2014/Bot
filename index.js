@@ -215,6 +215,8 @@ client.on('message' , (message) => {
                         }
                     })
                     
+            }if (message.content=="کس"){
+                message.reply("کس نگو دیگه کونی خان")
             }
             
     } 
