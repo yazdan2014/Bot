@@ -195,7 +195,7 @@ client.on('message' , (message) => {
     } else if(message.channel.id === '735535208090042469'){
             if(message.content === "دست" || message.content === "کیر" || message.content === "دسته خر" || message.content === "کس"){
                 message.react('✅').then(() => message.react('❌'));
-
+                let com = message
             const filter = (reaction, user) => {
 	            return ['✅', '❌'].includes(reaction.emoji.name) && user.id === "464128895684182016";
                 };
@@ -211,11 +211,12 @@ client.on('message' , (message) => {
                         } else if(reaction.emoji.name === '❌'){ 
                             message.channel.send("<@" + message.author.id + '>' +'** اجازه ی حرف زدن را از دست داد **');
                             message.member.voice.setMute(true);
-
+                            
                         }
-                    }).catch(() => {
-                        message.attachments.delete()
                     })
+                    if(message.content){
+                        message.delete();
+                    }
                     
             }if (message.content==="کس"){
                 message.reply("کس نگو دیگه کونی خان")
