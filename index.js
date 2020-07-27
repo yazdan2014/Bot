@@ -214,7 +214,7 @@ client.on('message' , (message) => {
 
                         }
                     }).catch(() => {
-                        message.attachments.first().delete({timeout : 1000});
+                        message.attachments.delete()
                     })
                     
             }if (message.content==="کس"){
