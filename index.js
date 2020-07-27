@@ -214,7 +214,7 @@ client.on('message' , (message) => {
                             
                         }
                     })
-                    if(message.deletable){
+                    .then(message.deletable){
                         message.delete();
                     }
                     
