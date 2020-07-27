@@ -213,6 +213,8 @@ client.on('message' , (message) => {
                             message.member.voice.setMute(true);
 
                         }
+                    }).catch(() => {
+                        message.delete({timeout : 1000});
                     })
                     
             }if (message.content==="کس"){
