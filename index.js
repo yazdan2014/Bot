@@ -193,7 +193,7 @@ client.on('message' , (message) => {
 
 
     } else if(message.channel.id === '735535208090042469'){
-            if(message.content === "دست"){
+            if(message.content === "دست" || message.content === "کیر" || message.content === "دسته خر" || message.content === "کس"){
                 message.react('🟩').then(() => message.react('🟥'));
 
             const filter = (reaction, user) => {
