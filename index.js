@@ -215,8 +215,10 @@ client.on('message' , (message) => {
                         }
                     })
                     
-            }if (message.content=="کس"){
+            }if (message.content==="کس"){
                 message.reply("کس نگو دیگه کونی خان")
+            }if(message.contet === 'استاد'){
+                message.reply("خایه مال سگ گایید")
             }
             
     } 
