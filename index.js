@@ -1,6 +1,5 @@
 let Discord = require('discord.js');
 let client = new Discord.Client();
-const cron = require('cron');
 
 
 client.once('ready', () => {
@@ -218,16 +217,7 @@ client.on('message' , (message) => {
                     
             }
             
-    } let scheduledMessage = new cron.CronJob('00 30 10 * * *', () => {
-        // This runs every day at 10:30:00, you can do anything you want
-        
-      });
-      
-      // When you want to start it, use:
-      scheduledMessage.start()
-      // You could also make a command to pause and resume the job
-
-    });
+    } 
 
 
     
