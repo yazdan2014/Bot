@@ -1,6 +1,6 @@
 let Discord = require('discord.js');
 let client = new Discord.Client();
-
+const cron = require('cron');
 
 
 client.once('ready', () => {
@@ -195,33 +195,37 @@ client.on('message' , (message) => {
 
     } else if(message.channel.id === '735535208090042469'){
             if(message.content === "دست"){
-                message.react('👍').then(() => message.react('👎'));
+                message.react('✅').then(() => message.react('⭕'));
 
             const filter = (reaction, user) => {
-	            return ['👍', '👎'].includes(reaction.emoji.name) && user.id === "464128895684182016";
+	            return ['✅', '⭕'].includes(reaction.emoji.name) && user.id === "464128895684182016";
                 };
                 
                 message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
                     .then(collected => {
                         const reaction = collected.first();
 
-                        if (reaction.emoji.name === '👍') {
+                        if (reaction.emoji.name === '✅') {
                             message.member.voice.setMute(false);
                             message.channel.send( "<@" + message.author.id + '>' +'** اجازه ی حرف زدن گرفت **');
                             
-                            
-                        } else if(reaction.emoji.name === '👎'){ 
+                        } else if(reaction.emoji.name === '⭕'){ 
                             message.channel.send("<@" + message.author.id + '>' +'** اجازه ی حرف زدن را از دست داد **');
                             message.member.voice.setMute(true);
+
                         }
                     })
                     
             }
             
-    } 
-
-    
-
+    } let scheduledMessage = new cron.CronJob('00 30 10 * * *', () => {
+        // This runs every day at 10:30:00, you can do anything you want
+        
+      });
+      
+      // When you want to start it, use:
+      scheduledMessage.start()
+      // You could also make a command to pause and resume the job
 
     });
 
@@ -234,6 +238,8 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     let newUserChannel = newState.channelID
     let oldUserChannel = oldState.channelID
     let vc111 = '733247185331945504' ;
+    let vc112 = '';
+
     
 
         if(oldUserChannel === null || oldUserChannel === undefined || newUserChannel !== oldUserChannel ){
@@ -251,20 +257,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
             }
             
                
-        }else if(oldUserChannel !== null || oldUserChannel !== undefined ){
-            //State changes on User leaving a voice channel
-
-            if(newUserChannel === null && oldUserChannel == vc111){
-                //User joins vc111
-                client.channels.cache.get('735535208090042469').send(newState.member.nickname + " از کلاس خارج شد ")
-            }
-
         }
 
 
-     
-     
-                
-     
-     
   })
