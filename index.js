@@ -43,7 +43,7 @@ client.on('message' , (message) => {
                     .then( () => {
                             message.delete({timeout : 1000});
                           })
-                        message.channel.send( "!!" + " تکلیف" + "**"+subject+"**"+ " شما ثبت شد " + "\n <@" + message.author.id + ">")
+                        message.channel.send( "!!" + " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n <@" + message.author.id + ">")
                         .then( message => {
                             message.delete({timeout : 10000});
                           })
