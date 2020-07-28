@@ -1,13 +1,35 @@
 let Discord = require('discord.js');
 let client = new Discord.Client();
 
+const hesabanC = '735059857710907533'; let hesaban = 'حسابان'
+const physicsC = '735059090119852062'; let physics = "فیزیک"
+const hendeseC = '735059500981157929'; let hendese = 'هندسه'
+const shimiC   = '735058434998665267'; let shimi = "شیمی"
+const zistC    = '735059673883082794'; let zist = "زیست"
+const amarC    = '735060608579403779'; let amar = 'آمار و احتمال'
+const arabiC   = '735060723218251836'; let arabi = "عربی"
+const zabanC   = '735060758941139005'; let zaban = 'زبان'
+const diniC    = '735060810031693845'; let dini = "دینی"
+const adabiatC = '735060837173297174'; let adabiat = "ادبیات"
+
+const ersalTakalif = '734346827616354355'
+const gapogoft = '733258474569465856'
+const gapogoftVC = "735540944635691129"
+
+const bot = '733375548553953373'
+const yazdan ='464128895684182016'
+
+let vc111r = '733247185331945504'; let tc111r = '735535208090042469'
+let vc112r = '735099884939771914'; let tc112r = '735535588874387539'
+let vc111t = '735103843045736479'; let tc111t = '735103691199217686'
+let vc112t = '735107551879757895'; let tc112t = '735104320688881796'
 
 client.once('ready', () => {
     console.log('Ready!');
 });
 
 client.on('message' , (message) => {
-    if(message.channel.id === '734346827616354355'){
+    if(message.channel.id === ersalTakalif){
         if(message.attachments.first()){
             if(message.attachments.first().name.endsWith("pdf")){
                 
@@ -16,18 +38,16 @@ client.on('message' , (message) => {
                 }else{
                     message.attachments.first().name = message.author.username.toString() + ".pdf" ;
                 }
-            
-                const hesaban = client.channels.cache.get('735059857710907533');
-                const physics = client.channels.cache.get('735059090119852062');
-                const hendese = client.channels.cache.get('735059500981157929');
-                const shimi   = client.channels.cache.get('735058434998665267');
-                const zist   =  client.channels.cache.get('735059673883082794');
-                const amar    = client.channels.cache.get('735060608579403779');
-                const arabi   = client.channels.cache.get('735060723218251836');
-                const zaban   = client.channels.cache.get('735060758941139005');
-                const dini    = client.channels.cache.get('735060810031693845');
-                const adabiat = client.channels.cache.get('735060837173297174');
-
+                function sendToChannel (channelID , subject){
+                    client.channels.cache.get(channelID).send(message.attachments.first())
+                    .then( () => {
+                            message.delete({timeout : 1000});
+                          })
+                        message.channel.send( "!!" + "تکلیف" + "**"+subject+"**"+ " شما ثبت شد " + "\n <@" + message.author.id + ">")
+                        .then( message => {
+                            message.delete({timeout : 10000});
+                          })
+                }
 
                 message.react('1️⃣')
 			.then(() => message.react('2️⃣'))
@@ -49,127 +69,22 @@ client.on('message' , (message) => {
                 
             message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
                 .then(collected => {
+
                     const reaction = collected.first();
 
-                    if (reaction.emoji.name === '1️⃣') {
-                        
-                        hesaban.send(message.attachments.first())
-                        .then( () => {
-                            message.delete({timeout : 1000});
-                          })
-                        message.channel.send( "!!" + "تکلیف حسابان شما ثبت شد " + "\n <@" + message.author.id + ">")
-                        .then( message => {
-                            message.delete({timeout : 10000});
-                          })
-                    
-                    }else if(reaction.emoji.name === '2️⃣'){ 
-                        
-                        physics.send(message.attachments.first())
-                        .then( () => {
-                            message.delete({timeout : 1000});
-                          })
-                        message.channel.send( "!!" + "تکلیف فیزیک شما ثبت شد " + "\n <@" + message.author.id + ">")
-                        .then( message => {
-                            message.delete({timeout : 10000});
-                          })
-                    
-                    }else if(reaction.emoji.name === '3️⃣'){ 
-
-                        hendese.send(message.attachments.first())
-                        .then( () => {
-                            message.delete({timeout : 1000});
-                          })
-                        message.channel.send( "!!" + "تکلیف هندسه شما ثبت شد " + "\n <@" + message.author.id + ">")
-                        .then( message => {
-                            message.delete({timeout : 10000});
-                          })
-
-                    }else if(reaction.emoji.name === '4️⃣'){ 
-
-                        shimi.send(message.attachments.first())
-                        .then( () => {
-                            message.delete({timeout : 1000});
-                          })
-                        message.channel.send( "!!" + "تکلیف شیمی شما ثبت شد " + "\n <@" + message.author.id + ">")
-                        .then( message => {
-                            message.delete({timeout : 10000});
-                          })
-
-                    }else if(reaction.emoji.name === '5️⃣'){ 
-
-                        zist.send(message.attachments.first())
-                        .then( () => {
-                            message.delete({timeout : 1000});
-                          })
-                        message.channel.send( "!!" + "تکلیف زیست شما ثبت شد " + "\n <@" + message.author.id + ">")
-                        .then( message => {
-                            message.delete({timeout : 10000});
-                          })
-
-                    }else if(reaction.emoji.name === '6️⃣'){ 
-
-                        amar.send(message.attachments.first())
-                        .then( () => {
-                            message.delete({timeout : 1000});
-                          })
-                        message.channel.send( "!!" + "تکلیف آمار و احتمال شما ثبت شد " + "\n <@" + message.author.id + ">") 
-                        .then( message => {
-                            message.delete({timeout : 10000});
-                          })
-
-                    }else if(reaction.emoji.name === '7️⃣'){ 
-
-                        arabi.send(message.attachments.first())
-                        .then( () => {
-                            message.delete({timeout : 1000});
-                          })
-                        message.channel.send( "!!" + "تکلیف عربی شما ثبت شد " + "\n <@" + message.author.id + ">")
-                        .then( message => {
-                            message.delete({timeout : 10000});
-                          })
-
-                    }else if(reaction.emoji.name === '8️⃣'){ 
-
-                        zaban.send(message.attachments.first())
-                        .then( () => {
-                            message.delete({timeout : 1000});
-                          })
-                        message.channel.send( "!!" + "تکلیف زبان شما ثبت شد " + "\n <@" + message.author.id + ">")
-                        .then( message => {
-                            message.delete({timeout : 10000});
-                          })
-
-                    }else if(reaction.emoji.name === '9️⃣'){ 
-
-                        dini.send(message.attachments.first())
-                        .then( () => {
-                            message.delete({timeout : 1000});
-                          })
-                        message.channel.send( "!!" + "تکلیف دینی شما ثبت شد " + "\n <@" + message.author.id + ">")
-                        .then( message => {
-                            message.delete({timeout : 10000});
-                          })
-
-                    }else if(reaction.emoji.name === '🔟'){ 
-
-                        adabiat.send(message.attachments.first())
-                        .then( () => {
-                            message.delete({timeout : 1000});
-                          })
-                        message.channel.send( "!!" + "تکلیف ادبیات شما ثبت شد " + "\n <@" + message.author.id + ">")
-                        .then( message => {
-                            message.delete({timeout : 10000});
-                          })
-
-                    }
-                    if(message.deleted){
-                        message.channel.send("<@" + message.author.id + ">" +"شماره ای انتخاب نشد ، لطفا دوباره تکلیف خود را ارسال کنید")
-                    }
+                    if (reaction.emoji.name === '1️⃣') { sendToChannel(hesabanC , hesaban) }
+                    if (reaction.emoji.name === '2️⃣') { sendToChannel(physicsC , physics) }
+                    if (reaction.emoji.name === '3️⃣') { sendToChannel(hendeseC , hendese) }
+                    if (reaction.emoji.name === '4️⃣') { sendToChannel(shimiC , shimi) }
+                    if (reaction.emoji.name === '5️⃣') { sendToChannel(zistC , zist) }
+                    if (reaction.emoji.name === '6️⃣') { sendToChannel(amarC, amar) } 
+                    if (reaction.emoji.name === '7️⃣') { sendToChannel(arabiC, arabi) }
+                    if (reaction.emoji.name === '8️⃣') { sendToChannel(zabanC , zaban )}
+                    if (reaction.emoji.name === '9️⃣') { sendToChannel(diniC ,dini)}
+                    if (reaction.emoji.name === '🔟') { sendToChannel(adabiatC , adabiat) }
                     
                 })
-                
 
-                
             }else{
                 message.delete();
                 message.channel.send( " فایل شما فرمت pdf ندارد" + "\n <@" + message.author.id + ">")
@@ -179,16 +94,13 @@ client.on('message' , (message) => {
               .catch(console.error);
             }
         }else if(message.content){
-            if(message.author.id !== '733375548553953373'){
+            if(message.author.id !== bot ){
                 message.delete();
             }
 
         }
 
-
-
-
-    }else if (message.channel.id === '733258474569465856'){
+    }else if (message.channel.id === gapogoft){
             if(message.attachments.first()){
                 message.delete();
             }
@@ -196,12 +108,12 @@ client.on('message' , (message) => {
 
 
 
-    } else if(message.channel.id === '735535208090042469'){
+    } else if(message.channel.id === ersalTakalif){
             if(message.content === "دست" || message.content === "کیر" || message.content === "دسته خر" || message.content === "کس"){
                 message.react('✅').then(() => message.react('❌'));
                 let com = message
             const filter = (reaction, user) => {
-	            return ['✅', '❌'].includes(reaction.emoji.name) && user.id === "464128895684182016";
+	            return ['✅', '❌'].includes(reaction.emoji.name) && user.id === yazdan ;
                 };
                 
                 message.delete({timeout:60000})
@@ -240,27 +152,21 @@ client.login(process.env.token);
 client.on('voiceStateUpdate', async (oldState, newState) => {
     let newUserChannel = newState.channelID
     let oldUserChannel = oldState.channelID
-    let vc111 = '733247185331945504' ;
-    let vc112 = '';
-
     
-
         if(oldUserChannel === null || oldUserChannel === undefined || newUserChannel !== oldUserChannel ){
             //State changes on User joinning a voice channel
 
-
-            if(newUserChannel === vc111){
+            if(newUserChannel === vc111r){
                 //User Joins the class voice channel
-                client.channels.cache.get('735535208090042469').send(newState.member.nickname + " وارد کلاس شد ")
+                client.channels.cache.get(tc111r).send(newState.member.nickname + " وارد کلاس شد ")
                 newState.member.voice.setMute(true)
             }
             
-            if(newUserChannel === "735540944635691129"){
+            if(newUserChannel === gapogoftVC){
                 //User Joins gapogoft
                 newState.member.voice.setMute(false);
             }
             
-               
         }
 
 
