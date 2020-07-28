@@ -109,7 +109,7 @@ client.on('message' , (message) => {
 
 
     } else if(message.channel.id === ersalTakalif){
-            if(message.content === "دست" || message.content === "کیر" || message.content === "دسته خر" || message.content === "کس"){
+            if(message.content === "دست" ){
                 message.react('✅').then(() => message.react('❌'));
                 let com = message
             const filter = (reaction, user) => {
@@ -138,8 +138,6 @@ client.on('message' , (message) => {
                      }
                     })
                     
-            }if (message.content==="کس"){
-                message.reply("کس نگو دیگه کونی خان")
             }
             
     } 
@@ -168,6 +166,5 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
             }
             
         }
-
 
   })
