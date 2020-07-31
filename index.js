@@ -38,6 +38,7 @@ client.on('message' , (message) => {
                 }else{
                     message.attachments.first().name = message.author.username.toString() + ".pdf" ;
                 }
+
                 function sendToChannel (channelID , subject){
                     client.channels.cache.get(channelID).send(message.attachments.first())
                     .then( () => {
@@ -60,9 +61,8 @@ client.on('message' , (message) => {
             .then(() => message.react('9️⃣'))
             .then(() => message.react('🔟'))
                     
-
                 const filter = (reaction, user) => {
-                return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === "464128895684182016";
+                return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === yazdan
                 };
 
                 message.delete({timeout:60000})
@@ -79,8 +79,8 @@ client.on('message' , (message) => {
                     if (reaction.emoji.name === '5️⃣') { sendToChannel(zistC , zist) }
                     if (reaction.emoji.name === '6️⃣') { sendToChannel(amarC, amar) } 
                     if (reaction.emoji.name === '7️⃣') { sendToChannel(arabiC, arabi) }
-                    if (reaction.emoji.name === '8️⃣') { sendToChannel(zabanC , zaban )}
-                    if (reaction.emoji.name === '9️⃣') { sendToChannel(diniC ,dini)}
+                    if (reaction.emoji.name === '8️⃣') { sendToChannel(zabanC , zaban) }
+                    if (reaction.emoji.name === '9️⃣') { sendToChannel(diniC ,dini) }
                     if (reaction.emoji.name === '🔟') { sendToChannel(adabiatC , adabiat) }
                     
                 })
@@ -105,10 +105,7 @@ client.on('message' , (message) => {
                 message.delete();
             }
 
-
-
-
-    } else if(message.channel.id === ersalTakalif){
+    } else if(message.channel.id === tc111r){
             if(message.content === "دست" ){
                 message.react('✅').then(() => message.react('❌'));
                 let com = message
