@@ -105,7 +105,7 @@ client.on('message' , (message) => {
                 message.delete();
             }
 
-    } else if(message.channel.id === tc111r){
+    } else if(message.channel.id === tc111r || message.channel.id === tc112r || message.channel.id === tc111t || message.channel.id === tc112t ){
             if(message.content === "دست" ){
                 message.react('✅').then(() => message.react('❌'));
                 let com = message
