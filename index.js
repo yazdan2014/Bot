@@ -120,13 +120,18 @@ client.on('message' , (message) => {
                         const reaction = collected.first();
 
                         if (reaction.emoji.name === '✅') {
-                            message.member.voice.setMute(false);
-                            message.channel.send( "<@" + message.author.id + '>' +'** اجازه ی حرف زدن گرفت **');
+                            message.member.voice.setMute(false)
+                            message.channel.send( "<@" + message.author.id + '>' +'** اجازه ی حرف زدن گرفت **')
+                            .then( message => {
+                                message.delete({timeout : 6000})
+                            } )
                             
                         } else if(reaction.emoji.name === '❌'){ 
-                            message.channel.send("<@" + message.author.id + '>' +'** اجازه ی حرف زدن را از دست داد **');
                             message.member.voice.setMute(true);
-                            
+                            message.channel.send("<@" + message.author.id + '>' +'** اجازه ی حرف زدن را از دست داد **')
+                            .then( message => {
+                                message.delete({timeout : 6000})
+                            } )
                         }
                     })
                     .then(() =>{
