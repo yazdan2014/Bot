@@ -62,7 +62,7 @@ client.on('message' , (message) => {
             .then(() => message.react('🔟'))
                     
                 const filter = (reaction, user) => {
-                return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === yazdan
+                return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === yazdan || user.id === "734853927744438353"
                 };
 
                 message.delete({timeout:60000})
