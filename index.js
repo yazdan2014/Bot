@@ -108,9 +108,9 @@ client.on('message' , (message) => {
     } else if(message.channel.id === tc111r || message.channel.id === tc112r || message.channel.id === tc111t || message.channel.id === tc112t ){
             if(message.content === "دست" ){
                 message.react('✅').then(() => message.react('❌'));
-                let com = message
-            const filter = (reaction, user) => {
-	            return ['✅', '❌'].includes(reaction.emoji.name) && user.roles.cache.has("735063970951462923") ;
+
+                const filter = (reaction, user) => {
+	            return ['✅', '❌'].includes(reaction.emoji.name) && user.messageReaction.message.guild.member(roles.cache.has)   ;
                 };
                 
                 message.delete({timeout:60000})
