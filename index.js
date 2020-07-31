@@ -110,7 +110,7 @@ client.on('message' , (message) => {
                 message.react('✅').then(() => message.react('❌'));
                 let com = message
             const filter = (reaction, user) => {
-	            return ['✅', '❌'].includes(reaction.emoji.name) && user.roles.find(r => r.name === "Teacher") ;
+	            return ['✅', '❌'].includes(reaction.emoji.name) && user.roles.has("735063970951462923") ;
                 };
                 
                 message.delete({timeout:60000})
