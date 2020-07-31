@@ -168,5 +168,8 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
             }
             
         }
+        if(oldState.selfMute === false && newState.selfMute ===  true){
+                newState.member.voice.setMute(true)
+        }
 
   })
