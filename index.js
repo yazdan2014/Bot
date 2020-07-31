@@ -168,7 +168,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
             }
             
         }
-        if(oldState.selfMute === false && newState.selfMute ===  true){
+        if(oldState.selfMute === false && newState.selfMute ===  true && newUserChannel == vc111r){
                 newState.member.voice.setMute(true)
         }
 
