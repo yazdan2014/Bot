@@ -62,7 +62,7 @@ client.on('message' , (message) => {
             .then(() => message.react('🔟'))
                     
                 const filter = (reaction, user) => {
-                return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === yazdan || user.id === "734853927744438353"
+                return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === yazdan 
                 };
 
                 message.delete({timeout:60000})
@@ -75,12 +75,12 @@ client.on('message' , (message) => {
                     if (reaction.emoji.name === '1️⃣') { sendToChannel(hesabanC , hesaban) }
                     if (reaction.emoji.name === '2️⃣') { sendToChannel(physicsC , physics) }
                     if (reaction.emoji.name === '3️⃣') { sendToChannel(hendeseC , hendese) }
-                    if (reaction.emoji.name === '4️⃣') { sendToChannel(shimiC , shimi) }
-                    if (reaction.emoji.name === '5️⃣') { sendToChannel(zistC , zist) }
-                    if (reaction.emoji.name === '6️⃣') { sendToChannel(amarC, amar) } 
-                    if (reaction.emoji.name === '7️⃣') { sendToChannel(arabiC, arabi) }
-                    if (reaction.emoji.name === '8️⃣') { sendToChannel(zabanC , zaban) }
-                    if (reaction.emoji.name === '9️⃣') { sendToChannel(diniC ,dini) }
+                    if (reaction.emoji.name === '4️⃣') { sendToChannel(shimiC , shimi)     }
+                    if (reaction.emoji.name === '5️⃣') { sendToChannel(zistC , zist)       }
+                    if (reaction.emoji.name === '6️⃣') { sendToChannel(amarC, amar)        } 
+                    if (reaction.emoji.name === '7️⃣') { sendToChannel(arabiC, arabi)      }
+                    if (reaction.emoji.name === '8️⃣') { sendToChannel(zabanC , zaban)     }
+                    if (reaction.emoji.name === '9️⃣') { sendToChannel(diniC ,dini)        }
                     if (reaction.emoji.name === '🔟') { sendToChannel(adabiatC , adabiat) }
                     
                 })
@@ -110,7 +110,7 @@ client.on('message' , (message) => {
                 message.react('✅').then(() => message.react('❌'));
                 let com = message
             const filter = (reaction, user) => {
-	            return ['✅', '❌'].includes(reaction.emoji.name) && user.id === yazdan ;
+	            return ['✅', '❌'].includes(reaction.emoji.name) && user.member.roles.find(r => r.name === "Teacher") ;
                 };
                 
                 message.delete({timeout:60000})
