@@ -165,10 +165,10 @@ client.on('message' , (message) => {
                     message.delete();
                     message.channel.bulkDelete(Num);
                 }
-                if(message.channel.id === tc111r){clear(M111r) ; M111r = 0}
-                if(message.channel.id === tc112r){clear(M112r) ; M112r = 0}
-                if(message.channel.id === tc111t){clear(M111t) ; M111t = 0}
-                if(message.channel.id === tc112t){clear(M112t) ; M112t = 0} 
+                if(message.channel.id === tc111r){clear(M111r) .then( () => M111r = 0)}
+                if(message.channel.id === tc112r){clear(M112r) .then( () => M112r = 0)}
+                if(message.channel.id === tc111t){clear(M111t) .then( () => M111t = 0)}
+                if(message.channel.id === tc112t){clear(M112t) .then( () => M112t = 0)} 
             }
                             
         }
