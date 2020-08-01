@@ -20,7 +20,7 @@ const bot = '733375548553953373'
 const yazdan ='464128895684182016'
 
 let vc111r = '733247185331945504'; let tc111r = '735535208090042469'
-let vc112r = '735099884939771914'; let tc112r = '735535588874387539'
+let vc112r = '735099884939771914'; let tc112r = '739179035107786803'
 let vc111t = '735103843045736479'; let tc111t = '735103691199217686'
 let vc112t = '735107551879757895'; let tc112t = '735104320688881796'
 
@@ -139,6 +139,12 @@ client.on('message' , (message) => {
                         message.delete();
                      }
                     })
+                    async function clear() {
+                        message.delete();
+                        message.channel.bulkDelete(20);
+                    }
+                    clear()
+                }
                     
             }
             
