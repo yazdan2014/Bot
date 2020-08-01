@@ -142,9 +142,9 @@ client.on('message' , (message) => {
                     
             }else if(message.content === "delete" && message.member.roles.cache.has("733423374776139816")){
                 async function clear() {
-                    msg.delete();
-                    const fetched = await msg.channel.fetchMessages({limit: 35});
-                    msg.channel.bulkDelete(fetched);
+                    mesasge.delete();
+                    const fetched = await message.channel.fetchMessages({limit: 35});
+                    message.channel.bulkDelete(fetched);
                 }
                 clear()
             }
