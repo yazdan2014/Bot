@@ -140,10 +140,6 @@ client.on('message' , (message) => {
                      }
                     })
                     
-            }else if(message.content === "delete" && message.member.roles.cache.has("733423374776139816")){
-                await message.channel.messages.fetch({ limit: amount }).then(messages => { // Fetches the messages
-                message.channel.bulkDelete(messages // Bulk deletes all messages that have been fetched and are not older than 14 days (due to the Discord API)
-                )});
             }
             
         }
