@@ -154,7 +154,7 @@ client.on('message' , (message) => {
                     
                     
             }
-            
+
             if(message.channel.id === tc111r){M111r++}
             if(message.channel.id === tc112r){M112r++}
             if(message.channel.id === tc111t){M111t++}
@@ -165,10 +165,10 @@ client.on('message' , (message) => {
                     message.delete();
                     message.channel.bulkDelete(Num);
                 }
-                if(message.channel.id === tc111r){clear(M111r)}
-                if(message.channel.id === tc112r){clear(M112r)}
-                if(message.channel.id === tc111t){clear(M111t)}
-                if(message.channel.id === tc112t){clear(M112t)}
+                if(message.channel.id === tc111r){clear(M111r) ; M111r = 0}
+                if(message.channel.id === tc112r){clear(M112r) ; M112r = 0}
+                if(message.channel.id === tc111t){clear(M111t) ; M111t = 0}
+                if(message.channel.id === tc112t){clear(M112t) ; M112t = 0} 
             }
                             
         }
