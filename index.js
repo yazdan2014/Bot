@@ -16,6 +16,11 @@ const ersalTakalif = '734346827616354355'
 const gapogoft = '733258474569465856'
 const gapogoftVC = "735540944635691129"
 
+let M111r = 0
+let M112r = 0
+let M111t = 0
+let M112t = 0
+
 const bot = '733375548553953373'
 const yazdan ='464128895684182016'
 
@@ -27,6 +32,13 @@ let vc112t = '735107551879757895'; let tc112t = '735104320688881796'
 client.once('ready', () => {
     console.log('Ready!');
 });
+
+client.on("messageDelete", async (message) => {
+    if(message.channel.id === tc111r){M111r--}
+    if(message.channel.id === tc112r){M112r--}
+    if(message.channel.id === tc111t){M111t--}
+    if(message.channel.id === tc112t){M112t--}
+})
 
 client.on('message' , (message) => {
     if(message.channel.id === ersalTakalif){
@@ -142,13 +154,21 @@ client.on('message' , (message) => {
                     
                     
             }
+            
+            if(message.channel.id === tc111r){M111r++}
+            if(message.channel.id === tc112r){M112r++}
+            if(message.channel.id === tc111t){M111t++}
+            if(message.channel.id === tc112t){M112t++}
+
              if (message.content === "delete" ){
-                async function clear() {
-                    const messagesToBeDeleted = message.channel.messages.cache.size - 2 //The "-2" is for the first 
+                async function clear(Num) {
                     message.delete();
-                    message.channel.bulkDelete(messagesToBeDeleted);
+                    message.channel.bulkDelete(Num);
                 }
-                clear()
+                if(message.channel.id === tc111r){clear(M111r)}
+                if(message.channel.id === tc112r){clear(M112r)}
+                if(message.channel.id === tc111t){clear(M111t)}
+                if(message.channel.id === tc112t){clear(M112t)}
             }
                             
         }
