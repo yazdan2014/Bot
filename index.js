@@ -141,13 +141,10 @@ client.on('message' , (message) => {
                     })
                     
             }else if(message.content === "delete" && message.member.roles.cache.has("733423374776139816")){
-                async function clear() {
-                    message.delete();
-                    const fetched = await message.channel.fetch({limit: 35});
-                    message.channel.bulkDelete(fetched);
-                }
-                clear()
-            }
+
+                await message.channel.messages.fetch({ limit: 30 }).then(messages => { // Fetches the messages
+                    message.channel.bulkDelete(messages // Bulk deletes all messages that have been fetched and are not older than 14 days (due to the Discord API)
+                )});
             
         }
 
