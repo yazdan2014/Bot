@@ -139,15 +139,17 @@ client.on('message' , (message) => {
                         message.delete();
                      }
                     })
-                    async function clear() {
-                        message.delete();
-                        message.channel.bulkDelete(20);
-                    }
-                    clear()
-                }
+                    
                     
             }
-            
+             if (message.content === "delete" ){
+                async function clear() {
+                    message.delete();
+                    message.channel.bulkDelete(30);
+                }
+                clear()
+            }
+                            
         }
 
 })
