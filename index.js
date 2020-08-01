@@ -144,8 +144,9 @@ client.on('message' , (message) => {
             }
              if (message.content === "delete" ){
                 async function clear() {
+                    const messagesToBeDeleted = message.channel.messages.cache.size - 2 //The "-2" is for the first 
                     message.delete();
-                    message.channel.bulkDelete(30);
+                    message.channel.bulkDelete(messagesToBeDeleted);
                 }
                 clear()
             }
