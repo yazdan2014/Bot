@@ -31,7 +31,7 @@ client.once('ready', () => {
 client.on('message' , (message) => {
     if(message.channel.id === ersalTakalif){
         if(message.attachments.first()){
-            if(message.attachments.first().name.endsWith("pdf")){
+            if(message.attachments.first().name.toLowerCase().endsWith("pdf") ){
                 
                 if(message.member.nickname){
                     message.attachments.first().name = message.member.nickname.toString() + ".pdf" ;
