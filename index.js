@@ -162,8 +162,7 @@ client.on('message' , (message) => {
 
              if (message.content === "delete" ){
                 async function clear(Num) {
-                    message.delete();
-                    message.channel.bulkDelete(Num);
+                    message.channel.bulkDelete(Num).then(() => message.delete() )
                 }
                 if(message.channel.id === tc111r){clear(M111r) .then( () => M111r = 0)}
                 if(message.channel.id === tc112r){clear(M112r) .then( () => M112r = 0)}
