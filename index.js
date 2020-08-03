@@ -166,10 +166,10 @@ client.on('message' , (message) => {
                     message.channel.bulkDelete(Num).then(() => message.delete() )
                 }
                 
-                if(message.channel.id === tc111r){if(M111r !== 1){clear(M111r) .then( () => M111r = 0)} else{message.delete()}}
-                if(message.channel.id === tc112r){if(M112r !== 1){clear(M112r) .then( () => M112r = 0)} else{message.delete()}}
-                if(message.channel.id === tc111t){if(M111t !== 1){clear(M111t) .then( () => M111t = 0)} else{message.delete()}}
-                if(message.channel.id === tc112t){if(M112t !== 1){clear(M112t) .then( () => M112t = 0)} else{message.delete()}}
+                if(message.channel.id === tc111r){if(M111r > 1){clear(M111r) .then( () => M111r = 0)} else{message.delete()}}
+                if(message.channel.id === tc112r){if(M112r > 1){clear(M112r) .then( () => M112r = 0)} else{message.delete()}}
+                if(message.channel.id === tc111t){if(M111t > 1){clear(M111t) .then( () => M111t = 0)} else{message.delete()}}
+                if(message.channel.id === tc112t){if(M112t > 1){clear(M112t) .then( () => M112t = 0)} else{message.delete()}}
             }
                             
         }
