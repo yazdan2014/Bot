@@ -162,7 +162,7 @@ client.on('message' , (message) => {
 
              if (message.content === "delete" && message.member.roles.cache.has("733423374776139816")){
                  
-                function clear(Num) {
+                async function clear(Num) {
                     message.channel.bulkDelete(Num).then(() => message.delete() )
                 }
                 
