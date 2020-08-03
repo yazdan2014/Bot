@@ -182,8 +182,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     let oldUserChannel = oldState.channelID
     let oldUserC = oldState.channel
     let newUserC = newState.channel
-    console.log(oldUserC , newUserC)
-        if(oldUserChannel === null || oldUserChannel === undefined || newUserChannel !== oldUserChannel ){
+        if(oldUserC === null || oldUserC === undefined  ){
             //State changes on User joinning a voice channel
 
             function setMuteOnJoin(VC , TC){
