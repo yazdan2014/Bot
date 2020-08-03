@@ -180,7 +180,9 @@ client.login(process.env.token);
 client.on('voiceStateUpdate', async (oldState, newState) => {
     let newUserChannel = newState.channelID
     let oldUserChannel = oldState.channelID
-    
+    let oldUserC = oldState.channel
+    let newUserC = newState.channel
+    console.log(oldUserC , newUserC)
         if(oldUserChannel === null || oldUserChannel === undefined || newUserChannel !== oldUserChannel ){
             //State changes on User joinning a voice channel
 
