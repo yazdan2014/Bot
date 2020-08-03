@@ -161,19 +161,21 @@ client.on('message' , (message) => {
             if(message.channel.id === tc112t){M112t++}
 
              if (message.content === "delete" && message.member.roles.cache.has("733423374776139816")){
+                 
                 async function clear(Num) {
                     message.channel.bulkDelete(Num).then(() => message.delete() )
                 }
-                if(message.channel.id === tc111r){clear(M111r) .then( () => M111r = 0)}
-                if(message.channel.id === tc112r){clear(M112r) .then( () => M112r = 0)}
-                if(message.channel.id === tc111t){clear(M111t) .then( () => M111t = 0)}
-                if(message.channel.id === tc112t){clear(M112t) .then( () => M112t = 0)} 
+                
+                if(message.channel.id === tc111r){if(M111r > 0){clear(M111r) .then( () => M111r = 0)} else{message.delete()}}
+                if(message.channel.id === tc112r){if(M112r > 0){clear(M112r) .then( () => M112r = 0)} else{message.delete()}}
+                if(message.channel.id === tc111t){if(M111t > 0){clear(M111t) .then( () => M111t = 0)} else{message.delete()}}
+                if(message.channel.id === tc112t){if(M112t > 0){clear(M112t) .then( () => M112t = 0)} else{message.delete()}}
             }
                             
         }
 
 })
-    
+
 
 client.login(process.env.token);
 
