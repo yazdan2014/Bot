@@ -206,5 +206,8 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
         if(oldState.selfMute === false && newState.selfMute ===  true && (newUserChannel == vc111r || newUserChannel === vc112r || newUserChannel === vc111t || newUserChannel === vc112t)){
                 newState.member.voice.setMute(true)
         }
+        if(oldUserChannel === vc111r && (newUserChannel === null || newUserChannel === undefined || newUserChannel !== oldUserChannel)){
+            client.channels.cache.get(tc111r).send(newState.member.nickname + " از کلاس خارج شد ")
+        }
 
   })
