@@ -29,6 +29,9 @@ let vc112r = '735103843045736479'; let tc112r = '739179035107786803'
 let vc111t = '735099884939771914'; let tc111t = '739219598703853678'
 let vc112t = '735107551879757895'; let tc112t = '739218438286868554'
 
+let ghayebRole = "740277714770198621"
+let hazerRole = "740278480029089813"
+
 client.once('ready', () => {
     console.log('Ready!');
 });
@@ -192,6 +195,8 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
                     //User Joins the class voice channel
                     client.channels.cache.get(TC).send(newState.member.nickname + " وارد کلاس شد ")
                     newState.member.voice.setMute(true)
+                    newState.member.roles.add(hazerRole)
+                    newState.member.roles.remove(ghayebRole)
                    }
                 }
 
@@ -203,6 +208,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
             if(newUserChannel === gapogoftVC){
                 //User Joins gapogoft
                 newState.member.voice.setMute(false);
+                
             }
             
         }
@@ -211,6 +217,8 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
         }
         if(oldUserChannel === vc111r && (newUserChannel === null || newUserChannel === undefined || newUserChannel !== oldUserChannel)){
             client.channels.cache.get(tc111r).send(newState.member.nickname + " از کلاس خارج شد ")
+            newState.member.roles.remove(hazerRole)
+            newState.member.roles.add(ghayebRole)
         }
 
   })
