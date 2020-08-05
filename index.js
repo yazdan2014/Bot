@@ -26,7 +26,7 @@ const yazdan ='464128895684182016'
 
 let vc111r = '733247185331945504'; let tc111r = '735535208090042469'
 let vc112r = '735103843045736479'; let tc112r = '739179035107786803'
-let vc111t = '735099884939771914'; let tc111t = '739219598703853678'
+let vc111t = '740457031638712373'; let tc111t = '739219598703853678'
 let vc112t = '735107551879757895'; let tc112t = '739218438286868554'
 
 let ghayebRole = "740277714770198621"
@@ -215,8 +215,11 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
         if(oldState.selfMute === false && newState.selfMute ===  true && (newUserChannel == vc111r || newUserChannel === vc112r || newUserChannel === vc111t || newUserChannel === vc112t)){
                 newState.member.voice.setMute(true)
         }
-        if(oldUserChannel === vc111r && (newUserChannel === null || newUserChannel === undefined || newUserChannel !== oldUserChannel)){
-            client.channels.cache.get(tc111r).send(newState.member.nickname + " از کلاس خارج شد ")
+        if((newUserChannel === null || newUserChannel === undefined || newUserChannel !== oldUserChannel)){
+            if(oldUserChannel === vc111r){client.channels.cache.get(tc111r).send(newState.member.nickname + " از کلاس خارج شد ")}
+            if(oldUserChannel === vc112r){client.channels.cache.get(tc112r).send(newState.member.nickname + " از کلاس خارج شد ")}
+            if(oldUserChannel === vc111t){client.channels.cache.get(tc111t).send(newState.member.nickname + " از کلاس خارج شد ")}
+            if(oldUserChannel === vc112t){client.channels.cache.get(tc112t).send(newState.member.nickname + " از کلاس خارج شد ")}
             newState.member.roles.remove(hazerRole)
             newState.member.roles.add(ghayebRole)
         }
