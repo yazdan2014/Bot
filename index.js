@@ -1,5 +1,5 @@
 let Discord = require('discord.js');
-let client = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
+let client = new Discord.Client();
 
 const hesabanC = '735059857710907533'; let hesaban = 'حسابان'
 const physicsC = '735059090119852062'; let physics = "فیزیک"
@@ -44,7 +44,6 @@ client.on("messageDelete", async (message) => {
     if(message.channel.id === tc112t){M112t--}
 })
 
-
 client.on('message' , (message) => {
     if(message.channel.id === ersalTakalif){
         if(message.attachments.first()){
@@ -55,6 +54,56 @@ client.on('message' , (message) => {
                 }else{
                     message.attachments.first().name = message.author.username.toString() + ".pdf" ;
                 }
+
+                function sendToChannel (channelID , subject){
+                    client.channels.cache.get(channelID).send(message.attachments.first())
+                    .then( () => {
+                            message.delete({timeout : 1000});
+                          })
+                        message.channel.send( "!!" + " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n <@" + message.author.id + ">")
+                        .then( message => {
+                            message.delete({timeout : 10000});
+                          })
+                }
+
+                message.react('1️⃣')
+			.then(() => message.react('2️⃣'))
+            .then(() => message.react('3️⃣'))
+            .then(() => message.react('4️⃣'))
+            .then(() => message.react('5️⃣'))
+            .then(() => message.react('6️⃣'))
+            .then(() => message.react('7️⃣'))
+            .then(() => message.react('8️⃣'))
+            .then(() => message.react('9️⃣'))
+            .then(() => message.react('🔟'))
+            .catch()
+                    
+                const filter = (reaction, user) => {
+                return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === yazdan 
+                };
+
+                
+            message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+                .then(collected => {
+
+                    const reaction = collected.first();
+
+                    if (reaction.emoji.name === '1️⃣') { sendToChannel(hesabanC , hesaban) }
+                    if (reaction.emoji.name === '2️⃣') { sendToChannel(physicsC , physics) }
+                    if (reaction.emoji.name === '3️⃣') { sendToChannel(hendeseC , hendese) }
+                    if (reaction.emoji.name === '4️⃣') { sendToChannel(shimiC , shimi)     }
+                    if (reaction.emoji.name === '5️⃣') { sendToChannel(zistC , zist)       }
+                    if (reaction.emoji.name === '6️⃣') { sendToChannel(amarC, amar)        } 
+                    if (reaction.emoji.name === '7️⃣') { sendToChannel(arabiC, arabi)      }
+                    if (reaction.emoji.name === '8️⃣') { sendToChannel(zabanC , zaban)     }
+                    if (reaction.emoji.name === '9️⃣') { sendToChannel(diniC ,dini)        }
+                    if (reaction.emoji.name === '🔟') { sendToChannel(adabiatC , adabiat) }
+                    
+                }).catch( () => {
+                    if(message.deletable){
+                        message.delete()
+                    }
+                })
 
             }else{
                 message.delete();
@@ -139,48 +188,6 @@ client.on('message' , (message) => {
 
 })
 
-client.on('messageReactionAdd', async (reaction, user) => {
-    function sendToChannel (channelID , subject){
-        client.channels.cache.get(channelID).send(reaction.message.channel.messages.cache.last().attachments)
-        .then( () => {
-                reaction.message.channel.messages.cache.last().delete()
-              })
-            reaction.message.channel.send( "!!" + " تکلیف " + "**" + subject + "**"+ " شما ثبت شد " + "\n <@" + message.author.id + ">")
-            .then( message => {
-                message.delete({timeout : 10000});
-              })
-    }
-
-	// When we receive a reaction we check if the reaction is partial or not
-	if (reaction.partial) {
-		// If the message this reaction belongs to was removed the fetching might result in an API error, which we need to handle
-		try {
-			await reaction.fetch();
-		} catch (error) {
-			console.log('Something went wrong when fetching the message: ', error);
-			// Return as `reaction.message.author` may be undefined/null
-			return;
-		}
-	}
-	// Now the message has been cached and is fully available
-    if(reaction.message.id === "740658095008776495"  ){
-        reaction.message.reactions.cache.last().remove()
-        if(reaction.message.channel.messages.cache.last().attachments && reaction.message.channel.messages.cache.last().author.id == user.id){
-            if (reaction.emoji.name === '1️⃣') { sendToChannel(hesabanC , hesaban) }
-            if (reaction.emoji.name === '2️⃣') { sendToChannel(physicsC , physics) }
-            if (reaction.emoji.name === '3️⃣') { sendToChannel(hendeseC , hendese) }
-            if (reaction.emoji.name === '4️⃣') { sendToChannel(shimiC , shimi)     }
-            if (reaction.emoji.name === '5️⃣') { sendToChannel(zistC , zist)       }
-            if (reaction.emoji.name === '6️⃣') { sendToChannel(amarC, amar)        } 
-            if (reaction.emoji.name === '7️⃣') { sendToChannel(arabiC, arabi)      }
-            if (reaction.emoji.name === '8️⃣') { sendToChannel(zabanC , zaban)     }
-            if (reaction.emoji.name === '9️⃣') { sendToChannel(diniC ,dini)        }
-            if (reaction.emoji.name === '🔟') { sendToChannel(adabiatC , adabiat) }
-        }
-    }
-	
-	
-});
 
 client.login(process.env.token);
 
