@@ -145,7 +145,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
         .then( () => {
                 reaction.message.channel.messages.cache.last().delete()
               })
-            message.channel.send( "!!" + " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n <@" + message.author.id + ">")
+            reaction.message.channel.send( "!!" + " تکلیف " + "**" + subject + "**"+ " شما ثبت شد " + "\n <@" + message.author.id + ">")
             .then( message => {
                 message.delete({timeout : 10000});
               })
