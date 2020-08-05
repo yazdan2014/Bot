@@ -29,6 +29,7 @@ let vc112r = '735103843045736479'; let tc112r = '739179035107786803'
 let vc111t = '740457031638712373'; let tc111t = '739219598703853678'
 let vc112t = '735107551879757895'; let tc112t = '739218438286868554'
 
+let dotRole = "733423374776139816"
 let ghayebRole = "740277714770198621"
 let hazerRole = "740278480029089813"
 
@@ -81,7 +82,6 @@ client.on('message' , (message) => {
                 return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === yazdan 
                 };
 
-                message.delete({timeout:60000})
                 
             message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
                 .then(collected => {
@@ -99,6 +99,10 @@ client.on('message' , (message) => {
                     if (reaction.emoji.name === '9️⃣') { sendToChannel(diniC ,dini)        }
                     if (reaction.emoji.name === '🔟') { sendToChannel(adabiatC , adabiat) }
                     
+                }).catch( () => {
+                    if(message.deletable){
+                        message.delete()
+                    }
                 })
 
             }else{
@@ -116,12 +120,12 @@ client.on('message' , (message) => {
 
         }
 
-    }else if (message.channel.id === gapogoft){
+    } else if (message.channel.id === gapogoft){
             if(message.attachments.first()){
                 message.delete();
             }
 
-    } else if(message.channel.id === tc111r || message.channel.id === tc112r || message.channel.id === tc111t || message.channel.id === tc112t ){
+    } else if (message.channel.id === tc111r || message.channel.id === tc112r || message.channel.id === tc111t || message.channel.id === tc112t ){
             if(message.content === "دست" ){
                 message.react('✅').then(() => message.react('❌'));
 
@@ -164,7 +168,7 @@ client.on('message' , (message) => {
             if(message.channel.id === tc111t){M111t++}
             if(message.channel.id === tc112t){M112t++}
 
-             if (message.content === "delete" && message.member.roles.cache.has("733423374776139816")){
+            if (message.content === "delete" && message.member.roles.cache.has(dotRole)){
                  
                 async function clear(Num) {
                     message.channel.bulkDelete(Num).then(() => message.delete() )
@@ -175,8 +179,12 @@ client.on('message' , (message) => {
                 if(message.channel.id === tc111t){if(M111t > 1){clear(M111t) .then( () => M111t = 0)} else{message.delete()}}
                 if(message.channel.id === tc112t){if(M112t > 1){clear(M112t) .then( () => M112t = 0)} else{message.delete()}}
             }
+
+            if((message.content === "غایب ها" || message.content === "غایب ها" || message.content === "غایب ها") && message.member.roles.cache.has(dotRole) ){
+                
+            }
                             
-        }
+    } 
 
 })
 
