@@ -164,7 +164,7 @@ client.on('messageReactionAdd', async (reaction, user) => {
 	}
 	// Now the message has been cached and is fully available
     if(reaction.message.id === "740658095008776495"  ){
-        reaction.remove();
+        reaction.message.reactions.cache.last().remove()
         if(reaction.message.channel.messages.cache.last().attachments && reaction.message.channel.messages.cache.last().author.id == user.id){
             if (reaction.emoji.name === '1️⃣') { sendToChannel(hesabanC , hesaban) }
             if (reaction.emoji.name === '2️⃣') { sendToChannel(physicsC , physics) }
