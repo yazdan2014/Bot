@@ -180,8 +180,13 @@ client.on('message' , (message) => {
                 if(message.channel.id === tc112t){if(M112t > 1){clear(M112t) .then( () => M112t = 0)} else{message.delete()}}
             }
 
-            if((message.content === "غایب ها" || message.content === "غایب ها" || message.content === "غایب ها") && message.member.roles.cache.has(dotRole) ){
-                
+            if((message.content === "غایب ها" || message.content === "غایب" ) && message.member.roles.cache.has(dotRole) ){
+                let roles = message.guild.roles.cache.get(ghayebRole);
+                roles.members.find(member => {
+                    client.users.fetch(member.nickname).then(user => {
+                        user.send('message');
+                    });
+                });
             }
                             
     } 
