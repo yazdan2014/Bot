@@ -40,17 +40,16 @@ client.on('message' , (message) => {
                           })
                 }
 
-                message.react('1️⃣')
-			.then(() => message.react('2️⃣'))
-            .then(() => message.react('3️⃣'))
-            .then(() => message.react('4️⃣'))
-            .then(() => message.react('5️⃣'))
-            .then(() => message.react('6️⃣'))
-            .then(() => message.react('7️⃣'))
-            .then(() => message.react('8️⃣'))
-            .then(() => message.react('9️⃣'))
-            .then(() => message.react('🔟'))
-            .catch()
+                message.react('1️⃣').catch()
+			.then(() => message.react('2️⃣')).catch()
+            .then(() => message.react('3️⃣')).catch()
+            .then(() => message.react('4️⃣')).catch()
+            .then(() => message.react('5️⃣')).catch()
+            .then(() => message.react('6️⃣')).catch()
+            .then(() => message.react('7️⃣')).catch()
+            .then(() => message.react('8️⃣')).catch()
+            .then(() => message.react('9️⃣')).catch()
+            .then(() => message.react('🔟')).catch()
                     
                 const filter = (reaction, user) => {
                 return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === config.userIDs.yazdan 
