@@ -228,8 +228,8 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
             if(oldUserChannel === vc112r){client.channels.cache.get(tc112r).send(newState.member.nickname + " از کلاس خارج شد ")}
             if(oldUserChannel === vc111t){client.channels.cache.get(tc111t).send(newState.member.nickname + " از کلاس خارج شد ")}
             if(oldUserChannel === vc112t){client.channels.cache.get(tc112t).send(newState.member.nickname + " از کلاس خارج شد ")}
-            newState.member.roles.remove(hazerRole)
-            newState.member.roles.add(ghayebRole)
+            oldState.member.roles.remove(hazerRole)
+            oldState.member.roles.add(ghayebRole)
         }
 
   })
