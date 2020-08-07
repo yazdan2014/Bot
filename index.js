@@ -40,7 +40,7 @@ client.on('message' , (message) => {
                           })
                 }
 
-                message.react('1️⃣').catch()
+                message.react('1️⃣')
 			.then(() => message.react('2️⃣')).catch()
             .then(() => message.react('3️⃣')).catch()
             .then(() => message.react('4️⃣')).catch()
