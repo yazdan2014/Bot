@@ -43,7 +43,7 @@ client.on('message' , (message) => {
                 }
                 if(message.attachments.first().name.includes("فیزیک")){
                     sendToChannel(config.homeworkStuff.physicsC , config.homeworkStuff.physics)
-                }
+                }else{
 
                 message.react('1️⃣')
 			.then(() => message.react('2️⃣'))
@@ -83,7 +83,7 @@ client.on('message' , (message) => {
                         message.delete()
                     }
                 })
-
+            }
             }else{
                 message.delete();
                 message.channel.send( " فایل شما فرمت pdf ندارد" + "\n <@" + message.author.id + ">")
