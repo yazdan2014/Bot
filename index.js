@@ -1,58 +1,34 @@
 let Discord = require('discord.js');
 let client = new Discord.Client();
-
-const hesabanC = '735059857710907533'; let hesaban = 'حسابان'
-const physicsC = '735059090119852062'; let physics = "فیزیک"
-const hendeseC = '735059500981157929'; let hendese = 'هندسه'
-const shimiC   = '735058434998665267'; let shimi = "شیمی"
-const zistC    = '735059673883082794'; let zist = "زیست"
-const amarC    = '735060608579403779'; let amar = 'آمار و احتمال'
-const arabiC   = '735060723218251836'; let arabi = "عربی"
-const zabanC   = '735060758941139005'; let zaban = 'زبان'
-const diniC    = '735060810031693845'; let dini = "دینی"
-const adabiatC = '735060837173297174'; let adabiat = "ادبیات"
-
-const ersalTakalif = '734346827616354355'
-const gapogoft = '733258474569465856'
-const gapogoftVC = "735540944635691129"
+const config = require('./config.json');
 
 let M111r = 0
 let M112r = 0
 let M111t = 0
 let M112t = 0
 
-const bot = '733375548553953373'
-const yazdan ='464128895684182016'
-
-let vc111r = '733247185331945504'; let tc111r = '735535208090042469'
-let vc112r = '735103843045736479'; let tc112r = '739179035107786803'
-let vc111t = '740457031638712373'; let tc111t = '739219598703853678'
-let vc112t = '735107551879757895'; let tc112t = '739218438286868554'
-
-let dotRole = "733423374776139816"
-let ghayebRole = "740277714770198621"
-let hazerRole = "740278480029089813"
-
 client.once('ready', () => {
     console.log('Ready!');
 });
 
 client.on("messageDelete", async (message) => {
-    if(message.channel.id === tc111r){M111r--}
-    if(message.channel.id === tc112r){M112r--}
-    if(message.channel.id === tc111t){M111t--}
-    if(message.channel.id === tc112t){M112t--}
+    if(message.channel.id === config.onlClassStuff.tc111r){M111r--}
+    if(message.channel.id === config.onlClassStuff.tc112r){M112r--}
+    if(message.channel.id === config.onlClassStuff.tc111t){M111t--}
+    if(message.channel.id === config.onlClassStuff.tc112t){M112t--}
 })
 
 client.on('message' , (message) => {
-    if(message.channel.id === ersalTakalif){
+    if(message.channel.id === config.homeworkStuff.ersalTakalif){
         if(message.attachments.first()){
             if(message.attachments.first().name.toLowerCase().endsWith("pdf") ){
                 
-                if(message.member.nickname){
-                    message.attachments.first().name = message.member.nickname.toString() + ".pdf" ;
-                }else{
-                    message.attachments.first().name = message.author.username.toString() + ".pdf" ;
+                function changeName (){
+                    if(message.member.nickname){
+                        message.attachments.first().name = message.member.nickname.toString() + ".pdf" ;
+                    }else{
+                        message.attachments.first().name = message.author.username.toString() + ".pdf" ;
+                    }
                 }
 
                 function sendToChannel (channelID , subject){
@@ -79,7 +55,7 @@ client.on('message' , (message) => {
             .catch()
                     
                 const filter = (reaction, user) => {
-                return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === yazdan 
+                return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === config.userIDs.yazdan 
                 };
 
                 
@@ -88,16 +64,16 @@ client.on('message' , (message) => {
 
                     const reaction = collected.first();
 
-                    if (reaction.emoji.name === '1️⃣') { sendToChannel(hesabanC , hesaban) }
-                    if (reaction.emoji.name === '2️⃣') { sendToChannel(physicsC , physics) }
-                    if (reaction.emoji.name === '3️⃣') { sendToChannel(hendeseC , hendese) }
-                    if (reaction.emoji.name === '4️⃣') { sendToChannel(shimiC , shimi)     }
-                    if (reaction.emoji.name === '5️⃣') { sendToChannel(zistC , zist)       }
-                    if (reaction.emoji.name === '6️⃣') { sendToChannel(amarC, amar)        } 
-                    if (reaction.emoji.name === '7️⃣') { sendToChannel(arabiC, arabi)      }
-                    if (reaction.emoji.name === '8️⃣') { sendToChannel(zabanC , zaban)     }
-                    if (reaction.emoji.name === '9️⃣') { sendToChannel(diniC ,dini)        }
-                    if (reaction.emoji.name === '🔟') { sendToChannel(adabiatC , adabiat) }
+                    if (reaction.emoji.name === '1️⃣') { sendToChannel(config.homeworkStuff.hesabanC , config.homeworkStuff.hesaban) }
+                    if (reaction.emoji.name === '2️⃣') { sendToChannel(config.homeworkStuff.physicsC , config.homeworkStuff.physics) }
+                    if (reaction.emoji.name === '3️⃣') { sendToChannel(config.homeworkStuff.hendeseC , config.homeworkStuff.hendese) }
+                    if (reaction.emoji.name === '4️⃣') { sendToChannel(config.homeworkStuff.shimiC ,   config.homeworkStuff.shimi)   }
+                    if (reaction.emoji.name === '5️⃣') { sendToChannel(config.homeworkStuff.zistC  ,   config.homeworkStuff.zist)    }
+                    if (reaction.emoji.name === '6️⃣') { sendToChannel(config.homeworkStuff.amarC  ,   config.homeworkStuff.amar)    } 
+                    if (reaction.emoji.name === '7️⃣') { sendToChannel(config.homeworkStuff.arabiC ,   config.homeworkStuff.arabi)   }
+                    if (reaction.emoji.name === '8️⃣') { sendToChannel(config.homeworkStuff.zabanC ,   config.homeworkStuff.zaban)   }
+                    if (reaction.emoji.name === '9️⃣') { sendToChannel(config.homeworkStuff.diniC  ,   config.homeworkStuff.dini)    }
+                    if (reaction.emoji.name === '🔟') { sendToChannel(config.homeworkStuff.adabiatC , config.homeworkStuff.adabiat) }
                     
                 }).catch( () => {
                     if(message.deletable){
@@ -114,23 +90,23 @@ client.on('message' , (message) => {
               .catch(console.error);
             }
         }else if(message.content){
-            if(message.author.id !== bot ){
+            if(message.author.id !== config.userIDs.bot ){
                 message.delete();
             }
 
         }
 
-    } else if (message.channel.id === gapogoft){
+    } else if (message.channel.id === config.gapogoftStuff.gapogoftTC){
             if(message.attachments.first()){
                 message.delete();
             }
 
-    } else if (message.channel.id === tc111r || message.channel.id === tc112r || message.channel.id === tc111t || message.channel.id === tc112t ){
+    } else if (message.channel.id === config.onlClassStuff.tc111r || message.channel.id === config.onlClassStuff.tc112r || message.channel.id === config.onlClassStuff.tc111t || message.channel.id === config.onlClassStuff.tc112t ){
             if(message.content === "دست" ){
                 message.react('✅').then(() => message.react('❌'));
 
                 const filter = (reaction, user) => {
-	            return ['✅', '❌'].includes(reaction.emoji.name) && user.id === yazdan || user.id === "732608571866349659" || user.id === "734853927744438353"
+	            return ['✅', '❌'].includes(reaction.emoji.name) && user.id === config.userIDs.yazdan || user.id === "732608571866349659" || user.id === "734853927744438353"
                 };
                 
                 message.delete({timeout:60000})
@@ -163,25 +139,25 @@ client.on('message' , (message) => {
                     
             }
 
-            if(message.channel.id === tc111r){M111r++}
-            if(message.channel.id === tc112r){M112r++}
-            if(message.channel.id === tc111t){M111t++}
-            if(message.channel.id === tc112t){M112t++}
+            if(message.channel.id === config.onlClassStuff.tc111r){M111r++}
+            if(message.channel.id === config.onlClassStuff.tc112r){M112r++}
+            if(message.channel.id === config.onlClassStuff.tc111t){M111t++}
+            if(message.channel.id === config.onlClassStuff.tc112t){M112t++}
 
-            if (message.content === "delete" && message.member.roles.cache.has(dotRole)){
+            if (message.content === "delete" && message.member.roles.cache.has(config.rolesStuff.dotRole)){
                  
                 async function clear(Num) {
                     message.channel.bulkDelete(Num).then(() => message.delete() )
                 }
                 
-                if(message.channel.id === tc111r){if(M111r > 1){clear(M111r) .then( () => M111r = 0)} else{message.delete()}}
-                if(message.channel.id === tc112r){if(M112r > 1){clear(M112r) .then( () => M112r = 0)} else{message.delete()}}
-                if(message.channel.id === tc111t){if(M111t > 1){clear(M111t) .then( () => M111t = 0)} else{message.delete()}}
-                if(message.channel.id === tc112t){if(M112t > 1){clear(M112t) .then( () => M112t = 0)} else{message.delete()}}
+                if(message.channel.id === config.onlClassStuff.tc111r){if(M111r > 1){clear(M111r) .then( () => M111r = 0)} else{message.delete()}}
+                if(message.channel.id === config.onlClassStuff.tc112r){if(M112r > 1){clear(M112r) .then( () => M112r = 0)} else{message.delete()}}
+                if(message.channel.id === config.onlClassStuff.tc111t){if(M111t > 1){clear(M111t) .then( () => M111t = 0)} else{message.delete()}}
+                if(message.channel.id === config.onlClassStuff.tc112t){if(M112t > 1){clear(M112t) .then( () => M112t = 0)} else{message.delete()}}
             }
 
-            if((message.content === "غایب ها" || message.content === "غایب" ) && message.member.roles.cache.has(dotRole) ){
-                let roles = message.guild.roles.cache.get(ghayebRole);
+            if((message.content === "غایب ها" || message.content === "غایب" ) && message.member.roles.cache.has(config.rolesStuff.dotRole) ){
+                let roles = message.guild.roles.cache.get(config.rolesStuff.ghayebRole);
                 message.channel.send(roles.members.sort())
             }
                             
@@ -196,7 +172,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     let newUserChannel = newState.channelID
     let oldUserChannel = oldState.channelID
     
-        if(oldUserChannel === null || oldUserChannel === undefined || oldUserChannel === gapogoftVC ){
+        if(oldUserChannel === null || oldUserChannel === undefined || oldUserChannel === config.gapogoftStuff.gapogoftTC ){
             //State changes on User joinning a voice channel
 
             function setMuteOnJoin(VC , TC){
@@ -204,33 +180,33 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
                     //User Joins the class voice channel
                     client.channels.cache.get(TC).send(newState.member.nickname + " وارد کلاس شد ")
                     newState.member.voice.setMute(true)
-                    newState.member.roles.add(hazerRole)
-                    newState.member.roles.remove(ghayebRole)
+                    newState.member.roles.add(config.rolesStuff.hazerRole)
+                    newState.member.roles.remove(config.rolesStuff.ghayebRole)
                    }
                 }
 
-            setMuteOnJoin(vc111r , tc111r);
-            setMuteOnJoin(vc112r , tc112r);
-            setMuteOnJoin(vc111t , tc111t);
-            setMuteOnJoin(vc112t , tc112t);
+            setMuteOnJoin(config.onlClassStuff.vc111r , config.onlClassStuff.tc111r);
+            setMuteOnJoin(config.onlClassStuff.vc112r , config.onlClassStuff.tc112r);
+            setMuteOnJoin(config.onlClassStuff.vc111t , config.onlClassStuff.tc111t);
+            setMuteOnJoin(config.onlClassStuff.vc112t , config.onlClassStuff.tc112t);
             
-            if(newUserChannel === gapogoftVC){
+            if(newUserChannel === config.gapogoftStuff.gapogoftTC){
                 //User Joins gapogoft
                 newState.member.voice.setMute(false);
                 
             }
             
         }
-        if(oldState.selfMute === false && newState.selfMute ===  true && (newUserChannel == vc111r || newUserChannel === vc112r || newUserChannel === vc111t || newUserChannel === vc112t)){
+        if(oldState.selfMute === false && newState.selfMute ===  true && (newUserChannel == config.onlClassStuff.vc111r || newUserChannel === config.onlClassStuff.vc112r || newUserChannel === config.onlClassStuff.vc111t || newUserChannel === config.onlClassStuff.vc112t)){
                 newState.member.voice.setMute(true)
         }
-        if((newUserChannel === null || newUserChannel === undefined || newUserChannel === gapogoftVC)){
-            if(oldUserChannel === vc111r){client.channels.cache.get(tc111r).send(newState.member.nickname + " از کلاس خارج شد ")}
-            if(oldUserChannel === vc112r){client.channels.cache.get(tc112r).send(newState.member.nickname + " از کلاس خارج شد ")}
-            if(oldUserChannel === vc111t){client.channels.cache.get(tc111t).send(newState.member.nickname + " از کلاس خارج شد ")}
-            if(oldUserChannel === vc112t){client.channels.cache.get(tc112t).send(newState.member.nickname + " از کلاس خارج شد ")}
-            oldState.member.roles.remove(hazerRole)
-            oldState.member.roles.add(ghayebRole)
+        if((newUserChannel === null || newUserChannel === undefined || newUserChannel === config.gapogoftStuff.gapogoftTC)){
+            if(oldUserChannel === config.onlClassStuff.vc111r){client.channels.cache.get(config.onlClassStuff.tc111r).send(newState.member.nickname + " از کلاس خارج شد ")}
+            if(oldUserChannel === config.onlClassStuff.vc112r){client.channels.cache.get(config.onlClassStuff.tc112r).send(newState.member.nickname + " از کلاس خارج شد ")}
+            if(oldUserChannel === config.onlClassStuff.vc111t){client.channels.cache.get(config.onlClassStuff.tc111t).send(newState.member.nickname + " از کلاس خارج شد ")}
+            if(oldUserChannel === config.onlClassStuff.vc112t){client.channels.cache.get(config.onlClassStuff.tc112t).send(newState.member.nickname + " از کلاس خارج شد ")}
+            oldState.member.roles.remove(config.rolesStuff.hazerRole)
+            oldState.member.roles.add(config.rolesStuff.ghayebRole)
         }
 
   })

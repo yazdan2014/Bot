@@ -1,5 +1,45 @@
 {
 	"prefix": "-",
-	"token": "NzMzMzc1NTQ4NTUzOTUzMzcz.XxF1ZQ.sO4iXhrJs1d6pOnNmRwHBR2y2X8",
-	"images" : []
+	"token": "NzMzMzc1NTQ4NTUzOTUzMzcz.XxCPNA.ePTAYOPMRZeIfRxOjDFgUYviQ2Y",
+
+	"homeworkStuff":{
+
+		"hesabanC" : "735059857710907533", "hesaban" : "حسابان",
+		"physicsC" : "735059090119852062", "physics" : "فیزیک",
+		"hendeseC" : "735059500981157929", "hendese" : "هندسه",
+		"shimiC"   : "735058434998665267", "shimi" : "شیمی",
+		"zistC"    : "735059673883082794", "zist" : "زیست",
+		"amarC"    : "735060608579403779", "amar" : "آمار و احتمال",
+		"arabiC"   : "735060723218251836", "arabi" : "عربی",
+		"zabanC"   : "735060758941139005", "zaban" : "زبان",
+		"diniC"    : "735060810031693845", "dini" : "دینی",
+		"adabiatC" : "735060837173297174", "adabiat" : "ادبیات",
+
+		"ersalTakalif" : "734346827616354355"
+
+	},
+
+	"gapogoftStuff":{
+		"gapogoftTC" : "733258474569465856",
+		"gapogoftVC" : "735540944635691129"
+	},
+
+	"userIDs":{
+		"bot"    : "733375548553953373",
+		"yazdan" : "464128895684182016"
+	},
+
+	"onlClassStuff":{
+		"vc111r" : "733247185331945504", "tc111r" : "735535208090042469",
+		"vc112r" : "735103843045736479", "tc112r" : "739179035107786803",
+		"vc111t" : "740457031638712373", "tc111t" : "739219598703853678",
+		"vc112t" : "735107551879757895", "tc112t" : "739218438286868554"
+	},
+
+	"rolesStuff":{
+		"dotRole" : "733423374776139816",
+		"ghayebRole" : "740277714770198621",
+		"hazerRole" : "740278480029089813"
+	}
+
 }
