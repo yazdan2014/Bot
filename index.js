@@ -195,7 +195,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
     let newUserChannel = newState.channelID
     let oldUserChannel = oldState.channelID
     
-        if(oldUserChannel === null || oldUserChannel === undefined || newUserChannel !== oldUserChannel ){
+        if(oldUserChannel === null || oldUserChannel === undefined || oldUserChannel === gapogoftVC ){
             //State changes on User joinning a voice channel
 
             function setMuteOnJoin(VC , TC){
@@ -223,7 +223,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
         if(oldState.selfMute === false && newState.selfMute ===  true && (newUserChannel == vc111r || newUserChannel === vc112r || newUserChannel === vc111t || newUserChannel === vc112t)){
                 newState.member.voice.setMute(true)
         }
-        if((newUserChannel === null || newUserChannel === undefined || newUserChannel !== oldUserChannel)){
+        if((newUserChannel === null || newUserChannel === undefined || newUserChannel === gapogoftVC)){
             if(oldUserChannel === vc111r){client.channels.cache.get(tc111r).send(newState.member.nickname + " از کلاس خارج شد ")}
             if(oldUserChannel === vc112r){client.channels.cache.get(tc112r).send(newState.member.nickname + " از کلاس خارج شد ")}
             if(oldUserChannel === vc111t){client.channels.cache.get(tc111t).send(newState.member.nickname + " از کلاس خارج شد ")}
