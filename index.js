@@ -22,6 +22,17 @@ client.on('message' , (message) => {
     if(message.channel.id === config.homeworkStuff.ersalTakalif){
         if(message.attachments.first()){
             if(message.attachments.first().name.toLowerCase().endsWith("pdf") ){
+
+                function sendToChannel (channelID , subject){
+                    client.channels.cache.get(channelID).send(message.attachments)
+                    .then( () => {
+                            message.delete({timeout : 1000});
+                          })
+                        message.channel.send( "!!" + " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n <@" + message.author.id + ">")
+                        .then( message => {
+                            message.delete({timeout : 10000});
+                          })
+                }
                 
                 function changeName (){
                     if(message.member.nickname){
@@ -30,16 +41,8 @@ client.on('message' , (message) => {
                         message.attachments.first().name = message.author.username.toString() + ".pdf" ;
                     }
                 }
-
-                function sendToChannel (channelID , subject){
-                    client.channels.cache.get(channelID).send(message.attachments.first())
-                    .then( () => {
-                            message.delete({timeout : 1000});
-                          })
-                        message.channel.send( "!!" + " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n <@" + message.author.id + ">")
-                        .then( message => {
-                            message.delete({timeout : 10000});
-                          })
+                if(message.attachments.first().name.includes("فیزیک")){
+                    sendToChannel(config.homeworkStuff.physicsC , config.homeworkStuff.physics)
                 }
 
                 message.react('1️⃣')
