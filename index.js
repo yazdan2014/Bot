@@ -30,7 +30,7 @@ client.on('message' , (message) => {
                 }
 
                 function sendToChannel (channelID , subject){
-                    client.channels.cache.get(channelID).send(message.attachments.first())
+                    client.channels.cache.get(channelID).send(message.attachments)
                     .then( () => {
                             message.delete({timeout : 1000});
                           })
