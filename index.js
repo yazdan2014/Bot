@@ -22,9 +22,15 @@ client.on('message' , (message) => {
     if(message.channel.id === config.homeworkStuff.ersalTakalif){
         if(message.attachments.first()){
             if(message.attachments.first().name.toLowerCase().endsWith("pdf") ){
+                
+                if(message.member.nickname){
+                    message.attachments.first().name = message.member.nickname.toString() + ".pdf" ;
+                }else{
+                    message.attachments.first().name = message.author.username.toString() + ".pdf" ;
+                }
 
                 function sendToChannel (channelID , subject){
-                    client.channels.cache.get(channelID).send(message.attachments)
+                    client.channels.cache.get(channelID).send(message.attachments.first())
                     .then( () => {
                             message.delete({timeout : 1000});
                           })
@@ -33,17 +39,6 @@ client.on('message' , (message) => {
                             message.delete({timeout : 10000});
                           })
                 }
-                
-                function changeName (){
-                    if(message.member.nickname){
-                        message.attachments.first().name = message.member.nickname.toString() + ".pdf" ;
-                    }else{
-                        message.attachments.first().name = message.author.username.toString() + ".pdf" ;
-                    }
-                }
-                if(message.attachments.first().name.includes("فیزیک")){
-                    sendToChannel(config.homeworkStuff.physicsC , config.homeworkStuff.physics)
-                }else{
 
                 message.react('1️⃣')
 			.then(() => message.react('2️⃣'))
@@ -83,7 +78,7 @@ client.on('message' , (message) => {
                         message.delete()
                     }
                 })
-            }
+
             }else{
                 message.delete();
                 message.channel.send( " فایل شما فرمت pdf ندارد" + "\n <@" + message.author.id + ">")
