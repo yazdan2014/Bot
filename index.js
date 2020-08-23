@@ -187,7 +187,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
             setMuteOnJoin(config.onlClassStuff.vc111t , config.onlClassStuff.tc111t);
             setMuteOnJoin(config.onlClassStuff.vc112t , config.onlClassStuff.tc112t);
             
-            if(newUserChannel === config.gapogoftStuff.gapogoftTC){
+            if(newUserChannel === config.gapogoftStuff.gapogoftTC && (oldUserChannel === null || oldUserChannel === undefined || oldUserChannel ===config.onlClassStuff.tc111r|| oldUserChannel ===config.onlClassStuff.tc112r|| oldUserChannel ===config.onlClassStuff.tc111t|| oldUserChannel ===config.onlClassStuff.tc112t)){
                 //User Joins gapogoft
                 newState.member.voice.setMute(false);
                 
