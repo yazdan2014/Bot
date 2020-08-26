@@ -190,7 +190,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
             if(newUserChannel === config.gapogoftStuff.gapogoftVC){
                 //User Joins gapogoft
                 newState.member.voice.setMute(false);
-                
+                  
             }
             
         }
