@@ -48,7 +48,7 @@ client.on('message' , (message) => {
                         await message.react("9️⃣")
                         await message.react("🔟")
                     } catch(error){
-                        message.channel.send("پیام شما پاک شد ، لطفا دوباره امتحان کنید")
+                        
                      }
                 }
                 moz();
