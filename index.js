@@ -82,7 +82,7 @@ client.on('message' , (message) => {
             }
         }else if(message.content){
             if(message.author.id !== config.userIDs.bot ){
-                message.delete();
+                message.reply("لطفا در بخش این بخش پبام نفرستید")
             }
 
         }
