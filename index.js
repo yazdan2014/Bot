@@ -19,48 +19,48 @@ client.on("messageDelete", async (message) => {
 })
 
 client.on('message' , (message) => {
-    if(message.channel.id === config.homeworkStuff.ersalTakalif){
+    if(message.channel.type === "dm"){
         if(message.attachments.first()){
             if(message.attachments.first().name.toLowerCase().endsWith("pdf") ){
-                
-                if(message.member.nickname){
-                    message.attachments.first().name = message.member.nickname.toString() + ".pdf" ;
+                let guild = client.guilds.cache.get('733245860825006171');
+                let member = guild.member(message.author);
+                let nickname = member ? member.displayName : null;
+                if(nickname){
+                    message.attachments.first().name = nickname.toString() +".pdf" ;
                 }else{
                     message.attachments.first().name = message.author.username.toString() + ".pdf" ;
                 }
-
+                
                 function sendToChannel (channelID , subject){
-                    client.channels.cache.get(channelID).send(message.attachments.first())
-                    .then( () => {
-                            message.delete({timeout : 1000});
-                          })
-                        message.channel.send( "!!" + " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n <@" + message.author.id + ">")
-                        .then( message => {
-                            message.delete({timeout : 10000});
-                          })
+                    client.channels.cache.get(channelID).send(message.attachments.last());
+                        message.channel.send(  " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n <@" + message.author.id + ">" + "!!" )
                 }
-
-                message.react('1️⃣')
-			.then(() => message.react('2️⃣')).catch()
-            .then(() => message.react('3️⃣')).catch()
-            .then(() => message.react('4️⃣')).catch()
-            .then(() => message.react('5️⃣')).catch()
-            .then(() => message.react('6️⃣')).catch()
-            .then(() => message.react('7️⃣')).catch()
-            .then(() => message.react('8️⃣')).catch()
-            .then(() => message.react('9️⃣')).catch()
-            .then(() => message.react('🔟')).catch()
-                    
+                    async function moz(){
+                     try{
+                        await message.react("1️⃣")
+                        await message.react("2️⃣")
+                        await message.react("3️⃣")
+                        await message.react("4️⃣")
+                        await message.react("5️⃣")
+                        await message.react("6️⃣")
+                        await message.react("7️⃣")
+                        await message.react("8️⃣")
+                        await message.react("9️⃣")
+                        await message.react("🔟")
+                    } catch(error){
+                        message.channel.send("پیام شما پاک شد ، لطفا دوباره امتحان کنید")
+                     }
+                }
+                moz();
                 const filter = (reaction, user) => {
                 return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === config.userIDs.yazdan 
                 };
-
                 
             message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
                 .then(collected => {
-
+        
                     const reaction = collected.first();
-
+        
                     if (reaction.emoji.name === '1️⃣') { sendToChannel(config.homeworkStuff.hesabanC , config.homeworkStuff.hesaban) }
                     if (reaction.emoji.name === '2️⃣') { sendToChannel(config.homeworkStuff.physicsC , config.homeworkStuff.physics) }
                     if (reaction.emoji.name === '3️⃣') { sendToChannel(config.homeworkStuff.hendeseC , config.homeworkStuff.hendese) }
@@ -72,13 +72,7 @@ client.on('message' , (message) => {
                     if (reaction.emoji.name === '9️⃣') { sendToChannel(config.homeworkStuff.diniC  ,   config.homeworkStuff.dini)    }
                     if (reaction.emoji.name === '🔟') { sendToChannel(config.homeworkStuff.adabiatC , config.homeworkStuff.adabiat) }
                     
-                }).catch( () => {
-                    if(message.deletable){
-                        message.delete()
-                    }
-                })
-
-            }else{
+                })}else{
                 message.delete();
                 message.channel.send( " فایل شما فرمت pdf ندارد" + "\n <@" + message.author.id + ">")
                .then( msg => {
