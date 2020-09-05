@@ -72,7 +72,10 @@ client.on('message' , (message) => {
                     if (reaction.emoji.name === '9️⃣') { sendToChannel(config.homeworkStuff.diniC  ,   config.homeworkStuff.dini)    }
                     if (reaction.emoji.name === '🔟') { sendToChannel(config.homeworkStuff.adabiatC , config.homeworkStuff.adabiat) }
                     
-                })}else{
+                }).catch(collected => {
+                    message.reply('تکلیف شما ثبت نشد. بعد از 60 ثانیه گزینه ای انتخاب نشد یا شما پیامتون را انتخاب نکردید');
+                });
+            }else{
                 message.delete();
                 message.channel.send( " فایل شما فرمت pdf ندارد" + "\n <@" + message.author.id + ">")
             }
