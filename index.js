@@ -33,7 +33,7 @@ client.on('message' , (message) => {
                 
                 function sendToChannel (channelID , subject){
                     client.channels.cache.get(channelID).send(message.attachments.last());
-                        message.channel.send(  " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n <@" + message.author.id + ">" + "!!" )
+                        message.channel.send(  " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n " + nickname )
                 }
                     async function moz(){
                      try{
