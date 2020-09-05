@@ -75,10 +75,6 @@ client.on('message' , (message) => {
                 })}else{
                 message.delete();
                 message.channel.send( " فایل شما فرمت pdf ندارد" + "\n <@" + message.author.id + ">")
-               .then( msg => {
-                msg.delete({timeout : 10000});
-              })
-              .catch(console.error);
             }
         }else if(message.content){
             if(message.author.id !== config.userIDs.bot ){
