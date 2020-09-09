@@ -60,7 +60,7 @@ client.on('message' , (message) => {
                 .then(collected => {
         
                     const reaction = collected.first();
-                    message.reactions.resolve().users.remove(message.author.id)
+                    message.reactions.cache.forEach( reaction => { if(reaction.users.cache.filter(user => user.id).has() == config.userIDs.bot ){reaction.remove()} })
                     if (reaction.emoji.name === '1️⃣') { sendToChannel(config.homeworkStuff.hesabanC , config.homeworkStuff.hesaban) }
                     if (reaction.emoji.name === '2️⃣') { sendToChannel(config.homeworkStuff.physicsC , config.homeworkStuff.physics) }
                     if (reaction.emoji.name === '3️⃣') { sendToChannel(config.homeworkStuff.hendeseC , config.homeworkStuff.hendese) }
