@@ -1,6 +1,7 @@
 let Discord = require('discord.js');
 let client = new Discord.Client();
 const config = require('./config.json');
+const embed = new Discord.MessageEmbed()
 
 let M111r = 0
 let M112r = 0
@@ -49,7 +50,7 @@ client.on('message' , (message) => {
                         await message.react("🔟")
                     } catch(error){
                         
-                     }
+                    }
                 }
                 moz();
                 const filter = (reaction, user) => {
@@ -147,7 +148,7 @@ client.on('message' , (message) => {
 
             if((message.content === "غایب ها" || message.content === "غایب" ) && message.member.roles.cache.has(config.rolesStuff.dotRole) ){
                 let roles = message.guild.roles.cache.get(config.rolesStuff.ghayebRole);
-                message.channel.send(roles.members.sort())
+                message.channel.send(roles.members.map())
             }
                             
     } 
