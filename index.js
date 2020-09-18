@@ -147,10 +147,78 @@ client.on('message' , (message) => {
             }
 
             if((message.content === "غایب ها" || message.content === "غایب" ) && message.member.roles.cache.has(config.rolesStuff.dotRole) ){
-                let roles = message.guild.roles.cache.get(config.rolesStuff.ghayebRole);
-                message.channel.send(roles.members.map(r => r.nickname))
+                let Groles = message.guild.roles.cache.get(config.rolesStuff.ghayebRole);
+                if(message.channel.id === config.onlClassStuff.tc111r){
+                    message.guild.roles.cache.get(config.rolesStuff.R111).members.map(r => r.nickname)
+                    message.channel.send(Groles.members.map(r => r.nickname))
+                }else if(message.channel.id === config.onlClassStuff.tc112r){
+                    message.channel.send(Groles.members.map(r => r.nickname))
+                }else if(message.channel.id === config.onlClassStuff.tc111t){
+                    message.channel.send(Groles.members.map(r => r.nickname))
+                }else if(message.channel.id === config.onlClassStuff.tc112t){
+                    message.channel.send(Groles.members.map(r => r.nickname))
+                }
             }
                             
+    }if(message.channel.id === config.onlClassStuff.tc111r){
+       if(message.content.includes("خوش آمدید")){
+            message.react("✅").then(()=> message.react("❌"))
+            const filter = (reaction, user) => {
+                return ["✅", "❌"].includes(reaction.emoji.name) && user.id === config.userIDs.yazdan 
+                };
+                
+            message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+                .then(collected => {        
+                    const reaction = collected.first();
+                    if(reaction.emoji.name === "✅"){
+                        message.channel.send(" کلاس شروع شد و دانش آموزان میتوانند وارد کلاس شوند ")
+                        client.channels.cache.get(config.onlClassStuff.tc111r).updateOverwrite( config.rolesStuff.R111 ,{
+                            SEND_MESSAGES: true,
+                            READ_MESSAGES: true,
+                        })
+                        client.channels.cache.get(config.onlClassStuff.vc111r).updateOverwrite( config.rolesStuff.R111 ,{
+                            VIEW_CHANNEL : true,
+                            CONNECT : true ,
+                            SPEAK : true ,
+                            VIDEO : true ,
+                        })
+                        
+                    }else{
+                        message.delete();
+                        message.channel.send("با تشکر شروع کلاس لغو شد (شما هنوز میتوانید داخل کلاس بمانید و با ورود دوباره شما، اجازه شروع دوباره کلاس از شما پرسیده خواهد شد)")
+                        .then(message => message.delete({timeout : 10000}))
+                        
+                    }
+                    
+                })
+       }
+       if(message.content.includes("دبیر از کلاس خارج شد")){
+        message.react("✅")
+        const filter = (reaction, user) => {
+            return ["✅"].includes(reaction.emoji.name) && user.id === config.userIDs.yazdan 
+            };
+            
+        message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
+            .then(collected => {        
+                const reaction = collected.first();
+                if(reaction.emoji.name === "✅"){
+                    client.channels.cache.get(config.onlClassStuff.tc111r).updateOverwrite( config.rolesStuff.R111 ,{
+                        SEND_MESSAGES: false,
+                        READ_MESSAGES: false,
+                    })
+                    client.channels.cache.get(config.onlClassStuff.vc111r).updateOverwrite( config.rolesStuff.R111 ,{
+                        VIEW_CHANNEL : false,
+                        CONNECT : false ,
+                        SPEAK : false ,
+                        VIDEO : false ,
+                    })
+
+                    client.channels.cache.get(config.onlClassStuff.vc111r).members.forEach(m => m.voice.setChannel(null));
+                    
+                }
+                
+            })
+       }
     } 
 })
 
@@ -165,7 +233,7 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
             //State changes on User joinning a voice channel
 
             function setMuteOnJoin(VC , TC){
-                if(newUserChannel === VC){
+                if(newUserChannel === VC && !newState.member.roles.cache.has(config.rolesStuff.dabirRole)){
                     //User Joins the class voice channel
                     client.channels.cache.get(TC).send(newState.member.nickname + " وارد کلاس شد ")
                     newState.member.voice.setMute(true)
@@ -178,24 +246,33 @@ client.on('voiceStateUpdate', async (oldState, newState) => {
             setMuteOnJoin(config.onlClassStuff.vc112r , config.onlClassStuff.tc112r);
             setMuteOnJoin(config.onlClassStuff.vc111t , config.onlClassStuff.tc111t);
             setMuteOnJoin(config.onlClassStuff.vc112t , config.onlClassStuff.tc112t);
+
+            if(newUserChannel === config.onlClassStuff.vc111r && (oldUserChannel === null || oldUserChannel === undefined ) && newState.member.roles.cache.has(config.rolesStuff.dabirRole)){
+                client.channels.cache.get(config.onlClassStuff.tc111r).send(`  ${newState.member.nickname} دبیر متحرم آقای \n  به کلاس خوش آمدید ، درصورت تمایل به شروع کلاس ✅ رنگ را فشار دهید و در غیر این صورت علامت ❌ رافشار دهید`)
+            }
             
             if(newUserChannel === config.gapogoftStuff.gapogoftVC){
                 //User Joins gapogoft
                 newState.member.voice.setMute(false);
-                  
             }
             
         }
         if(oldState.selfMute === false && newState.selfMute ===  true && (newUserChannel == config.onlClassStuff.vc111r || newUserChannel === config.onlClassStuff.vc112r || newUserChannel === config.onlClassStuff.vc111t || newUserChannel === config.onlClassStuff.vc112t)){
                 newState.member.voice.setMute(true)
         }
-        if((newUserChannel === null || newUserChannel === undefined || newUserChannel === config.gapogoftStuff.gapogoftTC)){
+        if((newUserChannel === null || newUserChannel === undefined || newUserChannel === config.gapogoftStuff.gapogoftTC ) && !newState.member.roles.cache.has(config.rolesStuff.dabirRole)){
             if(oldUserChannel === config.onlClassStuff.vc111r){client.channels.cache.get(config.onlClassStuff.tc111r).send(newState.member.nickname + " از کلاس خارج شد ")}
             if(oldUserChannel === config.onlClassStuff.vc112r){client.channels.cache.get(config.onlClassStuff.tc112r).send(newState.member.nickname + " از کلاس خارج شد ")}
             if(oldUserChannel === config.onlClassStuff.vc111t){client.channels.cache.get(config.onlClassStuff.tc111t).send(newState.member.nickname + " از کلاس خارج شد ")}
             if(oldUserChannel === config.onlClassStuff.vc112t){client.channels.cache.get(config.onlClassStuff.tc112t).send(newState.member.nickname + " از کلاس خارج شد ")}
             oldState.member.roles.remove(config.rolesStuff.hazerRole)
             oldState.member.roles.add(config.rolesStuff.ghayebRole)
+        }
+        if((newUserChannel === null || newUserChannel === undefined || newUserChannel === config.gapogoftStuff.gapogoftTC ) && newState.member.roles.cache.has(config.rolesStuff.dabirRole)){
+            if(oldUserChannel === config.onlClassStuff.vc111r){client.channels.cache.get(config.onlClassStuff.tc111r).send(`دبیر از کلاس خارج شد ، در صورت اتمام کلاس دبیر گزینه ی ✅ را انتخاب کنید در غیر این صورت لطفا دوباره داخل کلاس وارد شوید`)}
+            if(oldUserChannel === config.onlClassStuff.vc112r){client.channels.cache.get(config.onlClassStuff.tc112r).send(`دبیر از کلاس خارج شد ، در صورت اتمام کلاس دبیر گزینه ی ✅ را انتخاب کنید در غیر این صورت لطفا دوباره داخل کلاس وارد شوید`)}
+            if(oldUserChannel === config.onlClassStuff.vc111t){client.channels.cache.get(config.onlClassStuff.tc111t).send(`دبیر از کلاس خارج شد ، در صورت اتمام کلاس دبیر گزینه ی ✅ را انتخاب کنید در غیر این صورت لطفا دوباره داخل کلاس وارد شوید`)}
+            if(oldUserChannel === config.onlClassStuff.vc112t){client.channels.cache.get(config.onlClassStuff.tc112t).send(`دبیر از کلاس خارج شد ، در صورت اتمام کلاس دبیر گزینه ی ✅ را انتخاب کنید در غیر این صورت لطفا دوباره داخل کلاس وارد شوید`)}
         }
 
   })
