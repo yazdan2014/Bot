@@ -171,7 +171,7 @@ client.on('message' , (message) => {
                 .then(collected => {        
                     const reaction = collected.first();
                     if(reaction.emoji.name === "✅"){
-                        message.channel.send(" کلاس شروع شد و دانش آموزان میتوانند وارد کلاس شوند ")
+                        message.delete().then(()=>message.channel.send(" کلاس شروع شد و دانش آموزان میتوانند وارد کلاس شوند "))
                         client.channels.cache.get(config.onlClassStuff.tc111r).updateOverwrite( config.rolesStuff.R111 ,{
                             SEND_MESSAGES: true,
                             READ_MESSAGES: true,
@@ -202,6 +202,8 @@ client.on('message' , (message) => {
             .then(collected => {        
                 const reaction = collected.first();
                 if(reaction.emoji.name === "✅"){
+                    message.delete()
+                    message.channel.send("کلاس به اتمام رسید").then(msg => msg.delete({timeout : 10000}) )
                     client.channels.cache.get(config.onlClassStuff.tc111r).updateOverwrite( config.rolesStuff.R111 ,{
                         SEND_MESSAGES: false,
                         READ_MESSAGES: false,
