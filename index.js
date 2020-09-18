@@ -148,7 +148,7 @@ client.on('message' , (message) => {
 
             if((message.content === "غایب ها" || message.content === "غایب" ) && message.member.roles.cache.has(config.rolesStuff.dotRole) ){
                 let roles = message.guild.roles.cache.get(config.rolesStuff.ghayebRole);
-                message.channel.send(roles.members.map())
+                message.channel.send(roles.members.map(r => r.nickname))
             }
                             
     } 
