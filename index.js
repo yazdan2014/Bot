@@ -206,7 +206,7 @@ client.on('message' , (message) => {
                     message.channel.send("کلاس به اتمام رسید").then(msg => msg.delete({timeout : 10000}) )
                     client.channels.cache.get(config.onlClassStuff.tc111r).updateOverwrite( config.rolesStuff.R111 ,{
                         SEND_MESSAGES: false,
-                        READ_MESSAGES: false,
+                        VIEW_CHANNEL: false,
                     })
                     client.channels.cache.get(config.onlClassStuff.vc111r).updateOverwrite( config.rolesStuff.R111 ,{
                         VIEW_CHANNEL : false,
