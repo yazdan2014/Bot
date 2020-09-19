@@ -164,7 +164,7 @@ client.on('message' , (message) => {
        if(message.content.includes("خوش آمدید")){
             message.react("✅").then(()=> message.react("❌"))
             const filter = (reaction, user) => {
-                return ["✅", "❌"].includes(reaction.emoji.name) && user.id === config.userIDs.yazdan 
+                return ["✅", "❌"].includes(reaction.emoji.name) && user.id === config.userIDs.yazdan      
                 };
                 
             message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
@@ -174,7 +174,7 @@ client.on('message' , (message) => {
                         message.delete().then(()=>message.channel.send(" کلاس شروع شد و دانش آموزان میتوانند وارد کلاس شوند "))
                         client.channels.cache.get(config.onlClassStuff.tc111r).updateOverwrite( config.rolesStuff.R111 ,{
                             SEND_MESSAGES: true,
-                            READ_MESSAGES: true,
+                            VIEW_CHANNEL: true,
                         })
                         client.channels.cache.get(config.onlClassStuff.vc111r).updateOverwrite( config.rolesStuff.R111 ,{
                             VIEW_CHANNEL : true,
