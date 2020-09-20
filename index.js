@@ -137,7 +137,7 @@ client.on('message' , (message) => {
             if (message.content === "delete" && message.member.roles.cache.has(config.rolesStuff.dotRole)){
                  
                 async function clear(Num) {
-                    message.channel.bulkDelete(Num) )
+                    message.channel.bulkDelete(Num) 
                 }
                 
                 if(message.channel.id === config.onlClassStuff.tc111r){if(M111r > 1){clear(M111r) .then( () => M111r = 0)} else{message.delete()}}
