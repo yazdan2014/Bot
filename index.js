@@ -137,13 +137,13 @@ client.on('message' , (message) => {
             if (message.content === "delete" && message.member.roles.cache.has(config.rolesStuff.dotRole)){
                  
                 async function clear(Num) {
-                    message.channel.bulkDelete(Num) 
+                    message.channel.bulkDelete(Num).then(() => message.delete() )
                 }
                 
-                if(message.channel.id === config.onlClassStuff.tc111r){if(M111r > 1){clear(M111r) .then( () => M111r = 0)} else{message.delete()}}
-                if(message.channel.id === config.onlClassStuff.tc112r){if(M112r > 1){clear(M112r) .then( () => M112r = 0)} else{message.delete()}}
-                if(message.channel.id === config.onlClassStuff.tc111t){if(M111t > 1){clear(M111t) .then( () => M111t = 0)} else{message.delete()}}
-                if(message.channel.id === config.onlClassStuff.tc112t){if(M112t > 1){clear(M112t) .then( () => M112t = 0)} else{message.delete()}}
+                if(message.channel.id === config.onlClassStuff.tc111r){if(M111r > 1){clear(M111r) .then( () => M111r = 0)}}
+                if(message.channel.id === config.onlClassStuff.tc112r){if(M112r > 1){clear(M112r) .then( () => M112r = 0)}}
+                if(message.channel.id === config.onlClassStuff.tc111t){if(M111t > 1){clear(M111t) .then( () => M111t = 0)}}
+                if(message.channel.id === config.onlClassStuff.tc112t){if(M112t > 1){clear(M112t) .then( () => M112t = 0)}}
             }
 
             if((message.content === "غایب ها" || message.content === "غایب" ) && message.member.roles.cache.has(config.rolesStuff.dotRole) ){
