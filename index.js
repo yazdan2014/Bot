@@ -33,6 +33,8 @@ client.on('message' , (message) => {
                 }
                 
                 function sendToChannel (channelID , subject){
+                    message.member.roles.add(config.rolesStuff.taklifAnjamShode)
+                    message.member.roles.remove(config.rolesStuff.taklifAnjamNashode)
                     client.channels.cache.get(channelID).send(message.attachments.first());
                         message.channel.send(  " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n " + nickname )
                 }
@@ -149,7 +151,6 @@ client.on('message' , (message) => {
             if((message.content === "غایب ها" || message.content === "غایب" ) && message.member.roles.cache.has(config.rolesStuff.dotRole) ){
                 let Groles = message.guild.roles.cache.get(config.rolesStuff.ghayebRole);
                 if(message.channel.id === config.onlClassStuff.tc111r){
-                    message.guild.roles.cache.get(config.rolesStuff.R111).members.map(r => r.nickname)
                     message.channel.send(Groles.members.map(r => r.nickname))
                 }else if(message.channel.id === config.onlClassStuff.tc112r){
                     message.channel.send(Groles.members.map(r => r.nickname))
