@@ -2,6 +2,7 @@ let Discord = require('discord.js');
 let client = new Discord.Client();
 const config = require('./config.json');
 const embed = new Discord.MessageEmbed()
+let cron = require('node-cron');
 
 let M111r = 0
 let M112r = 0
@@ -19,6 +20,21 @@ client.on("messageDelete", async (message) => {
     if(message.channel.id === config.onlClassStuff.tc112t){M112t--}
 })
 
+cron.schedule('* * * * *' , () => {
+    let anjamDade = ""
+    client.guilds.cache.get("733245860825006171").members.cache.forEach(r => {if(r.roles.cache.some(r => r.name == "H")){ anjamDade += `${r.nickname}\n`}})
+    client.channels.cache.get("759333782280732722").send(anjamDade);
+    client.guilds.cache.get("733245860825006171").roles.cache.find(r => r.name == "H").delete()
+    client.guilds.cache.get("733245860825006171").roles.create({
+        data: {
+          name: "H",
+          color: '#20ee51',
+        }
+      })
+} , {
+    timezone: 'Asia/Tehran'
+})
+
 client.on('message' , (message) => {
     if(message.channel.type === "dm"){
         if(message.attachments.first()){
@@ -33,8 +49,10 @@ client.on('message' , (message) => {
                 }
                 
                 function sendToChannel (channelID , subject){
-                    message.member.roles.add(config.rolesStuff.taklifAnjamShode)
-                    message.member.roles.remove(config.rolesStuff.taklifAnjamNashode)
+                    let HRole = message.member.roles.cache.find(r => r.name = "H")
+                    if(!message.member.roles.cache.some(r => r.name = "H")){
+                        message.member.roles.add(HRole)
+                    }
                     client.channels.cache.get(channelID).send(message.attachments.first());
                         message.channel.send(  " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n " + nickname )
                 }
