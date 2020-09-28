@@ -20,12 +20,12 @@ client.on("messageDelete", async (message) => {
     if(message.channel.id === config.onlClassStuff.tc112t){M112t--}
 })
 
-cron.schedule('* * * * *' , () => {
+cron.schedule('00 24 * * *' , () => {
     let anjamDade = ""
-    client.guilds.cache.get("733245860825006171").members.cache.forEach(r => {if(r.roles.cache.some(r => r.name == "H")){ anjamDade += `${r.nickname}\n`}})
-    client.channels.cache.get("759333782280732722").send(anjamDade);
-    client.guilds.cache.get("733245860825006171").roles.cache.find(r => r.name == "H").delete()
-    client.guilds.cache.get("733245860825006171").roles.create({
+    client.guilds.cache.get(config.allameGuild).members.cache.forEach(r => {if(r.roles.cache.some(r => r.name == "H")){ anjamDade += `${r.nickname}\n`}})
+    if(anjamDade != ""){client.channels.cache.get(config.homeworkStuff.vazitaTakalif).send(anjamDade);}
+    client.guilds.cache.get(config.allameGuild).roles.cache.find(r => r.name == "H").delete()
+    client.guilds.cache.get(config.allameGuild).roles.create({
         data: {
           name: "H",
           color: '#20ee51',
