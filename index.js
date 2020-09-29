@@ -23,7 +23,7 @@ client.on("messageDelete", async (message) => {
 cron.schedule('00 24 * * *' , () => {
     let anjamDade = ""
     client.guilds.cache.get(config.allameGuild).members.cache.forEach(r => {if(r.roles.cache.some(r => r.name == "H")){ anjamDade += `${r.nickname}\n`}})
-    if(anjamDade != ""){client.channels.cache.get(config.homeworkStuff.vazitaTakalif).send(anjamDade);}
+    if(anjamDade != ""){client.channels.cache.get(config.homeworkStuff.vazitaTakalif).send(anjamDade);}else{client.channels.cache.get(config.homeworkStuff.vazitaTakalif).send("!! همه تکالیف خود را انجام داده بودند")}
     client.guilds.cache.get(config.allameGuild).roles.cache.find(r => r.name == "H").delete()
     client.guilds.cache.get(config.allameGuild).roles.create({
         data: {
