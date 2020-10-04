@@ -21,7 +21,7 @@ client.on("messageDelete", async (message) => {
     if(message.channel.id === config.onlClassStuff.tc112t){M112t--}
 }) 
 
-cron.schedule('37 22 * * *' , () => {
+cron.schedule('38 22 * * *' , () => {
     let anjamNaDade = ""
     client.guilds.cache.get(config.allameGuild).members.cache.forEach(r => {if(r.roles.cache.some(r => r.name != "H")){ anjamNaDade += `🔴${r.nickname}\n`}})
     if(anjamNaDade != ""){
