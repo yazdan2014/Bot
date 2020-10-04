@@ -11,7 +11,7 @@ let M111t = 0
 let M112t = 0 
 
 client.once('ready', () => {
-    console.log('Ready!');
+    console.log('Ready!'); 
 });
 
 client.on("messageDelete", async (message) => {
