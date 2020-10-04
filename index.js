@@ -41,7 +41,7 @@ cron.schedule('00 00 * * *' , () => {
 })
 
 client.on('message' , (message) => {
-    if(message.channel.type === "dm"){
+    if(message.channel.type === "dm" && message.author.id != config.userIDs.bot){
         if(message.attachments.first()){
             if(message.attachments.first().name.toLowerCase().endsWith("pdf") ){
                 let guild = client.guilds.cache.get('733245860825006171');
