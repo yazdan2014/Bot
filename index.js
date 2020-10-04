@@ -22,7 +22,7 @@ client.on("messageDelete", async (message) => {
 }) 
 
 cron.schedule('5 12 * * *' , () => {
-    let anjamDade = "" 
+    let anjamDade = ""  
     client.guilds.cache.get(config.allameGuild).members.cache.forEach(r => {if(r.roles.cache.some(r => r.name != "H")){ anjamNadade += `🔴${r.nickname}\n`}})
     if(anjamDade != ""){
         client.channels.cache.get(config.homeworkStuff.vazitaTakalif).send( ": اسامی کسانی که تکلیف خود را ثبت نکردند "+ `\n ${anjamNadade}`)
