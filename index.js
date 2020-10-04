@@ -19,7 +19,7 @@ client.on("messageDelete", async (message) => {
     if(message.channel.id === config.onlClassStuff.tc112r){M112r--}
     if(message.channel.id === config.onlClassStuff.tc111t){M111t--}
     if(message.channel.id === config.onlClassStuff.tc112t){M112t--}
-})
+}) 
 
 cron.schedule('59 11 * * *' , () => {
     let anjamDade = "" 
