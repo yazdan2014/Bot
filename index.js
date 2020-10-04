@@ -21,9 +21,9 @@ client.on("messageDelete", async (message) => {
     if(message.channel.id === config.onlClassStuff.tc112t){M112t--}
 }) 
 
-cron.schedule('31 22 * * *' , () => {
+cron.schedule('34 22 * * *' , () => {
     let anjamDade = ""
-    client.guilds.cache.get(config.allameGuild).members.cache.forEach(r => {if(r.roles.cache.some(r => r.name != "H")){ anjamNadade += `🔴${r.nickname}\n`}})
+    client.guilds.cache.get(config.allameGuild).members.cache.forEach(r => {if(r.roles.cache.some(r => r.name != "H")){ anjamDade += `🔴${r.nickname}\n`}})
     if(anjamDade != ""){
         client.channels.cache.get(config.homeworkStuff.vazitaTakalif).send( ": اسامی کسانی که تکلیف خود را ثبت نکردند "+ `\n ${anjamNadade}`)
     }else{
