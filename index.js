@@ -1,17 +1,17 @@
 let Discord = require('discord.js');
 let client = new Discord.Client();
 const config = require('./config.json');
-const embed = new Discord.MessageEmbed()
+const embed = new Discord.MessageEmbed();
 let cron = require('node-cron');
-let date = new Date()
+let date = new Date();
  
 let M111r = 0
 let M112r = 0 
 let M111t = 0
-let M112t = 0 
+let M112t = 0
 
 client.once('ready', () => {
-    console.log('Ready!'); 
+    console.log('Ready!');
 });
 
 client.on("messageDelete", async (message) => {
@@ -52,7 +52,7 @@ client.on('message' , (message) => {
                 }else{
                     message.attachments.first().name = message.author.username.toString() + ".pdf" ;
                 }
-                
+
                 function sendToChannel (channelID , subject){
                     let HRole = client.guilds.cache.get(config.allameGuild).roles.cache.find(r => r.name = "H")
                     if(!client.guilds.cache.get(config.allameGuild).members.cache.get(message.author.id).roles.cache.some(r => r.name = "H")){
@@ -79,12 +79,12 @@ client.on('message' , (message) => {
                 }
                 moz();
                 const filter = (reaction, user) => {
-                return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === config.userIDs.yazdan 
+                return ['1️⃣', '2️⃣', '3️⃣', '4️⃣', '5️⃣', '6️⃣', '7️⃣', '8️⃣', '9️⃣', '🔟'].includes(reaction.emoji.name) && user.id === message.author.id || user.id === config.userIDs.yazdan
                 };
-                
+
             message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
                 .then(collected => {
-        
+
                     const reaction = collected.first();
                     message.reactions.cache.forEach( reaction => { if(reaction.users.cache.filter(user => user.id).has(config.userIDs.bot) ){reaction.remove()} })
                     if (reaction.emoji.name === '1️⃣') { sendToChannel(config.homeworkStuff.hesabanC , config.homeworkStuff.hesaban) }
@@ -92,12 +92,12 @@ client.on('message' , (message) => {
                     if (reaction.emoji.name === '3️⃣') { sendToChannel(config.homeworkStuff.hendeseC , config.homeworkStuff.hendese) }
                     if (reaction.emoji.name === '4️⃣') { sendToChannel(config.homeworkStuff.shimiC ,   config.homeworkStuff.shimi)   }
                     if (reaction.emoji.name === '5️⃣') { sendToChannel(config.homeworkStuff.zistC  ,   config.homeworkStuff.zist)    }
-                    if (reaction.emoji.name === '6️⃣') { sendToChannel(config.homeworkStuff.amarC  ,   config.homeworkStuff.amar)    } 
+                    if (reaction.emoji.name === '6️⃣') { sendToChannel(config.homeworkStuff.amarC  ,   config.homeworkStuff.amar)    }
                     if (reaction.emoji.name === '7️⃣') { sendToChannel(config.homeworkStuff.arabiC ,   config.homeworkStuff.arabi)   }
                     if (reaction.emoji.name === '8️⃣') { sendToChannel(config.homeworkStuff.zabanC ,   config.homeworkStuff.zaban)   }
                     if (reaction.emoji.name === '9️⃣') { sendToChannel(config.homeworkStuff.diniC  ,   config.homeworkStuff.dini)    }
                     if (reaction.emoji.name === '🔟') { sendToChannel(config.homeworkStuff.adabiatC , config.homeworkStuff.adabiat) }
-                    
+
                 }).catch(collected => {
                 });
             }else{
@@ -123,13 +123,12 @@ client.on('message' , (message) => {
                 const filter = (reaction, user) => {
 	            return ['✅', '❌'].includes(reaction.emoji.name) && user.id === config.userIDs.yazdan || user.id === "732608571866349659" || user.id === "734853927744438353"
                 };
-                
+
                 message.delete({timeout:60000})
 
                 message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
                     .then(collected => {
                         const reaction = collected.first();
-
                         if (reaction.emoji.name === '✅') {
                             message.member.voice.setMute(false)
                             message.channel.send( "<@" + message.author.id + '>' +'** اجازه ی حرف زدن گرفت **')
@@ -150,7 +149,6 @@ client.on('message' , (message) => {
                         message.delete();
                      }
                     })
-                    
             }
 
             if(message.channel.id === config.onlClassStuff.tc111r){M111r++}
@@ -163,7 +161,7 @@ client.on('message' , (message) => {
                 async function clear(Num) {
                     message.channel.bulkDelete(Num).then(() => message.delete() )
                 }
-                
+
                 if(message.channel.id === config.onlClassStuff.tc111r){if(M111r > 1){clear(M111r) .then( () => M111r = 0)}}
                 if(message.channel.id === config.onlClassStuff.tc112r){if(M112r > 1){clear(M112r) .then( () => M112r = 0)}}
                 if(message.channel.id === config.onlClassStuff.tc111t){if(M111t > 1){clear(M111t) .then( () => M111t = 0)}}
@@ -241,10 +239,10 @@ client.on('message' , (message) => {
                     client.channels.cache.get(config.onlClassStuff.vc111r).members.forEach(m => m.voice.setChannel(null));
                     
                 }
-                
+
             })
        }
-    } 
+    }
 })
 
 
@@ -253,7 +251,7 @@ client.login(process.env.token);
 client.on('voiceStateUpdate', async (oldState, newState) => {
     let newUserChannel = newState.channelID
     let oldUserChannel = oldState.channelID
-    
+
         if(oldUserChannel === null || oldUserChannel === undefined || oldUserChannel === config.gapogoftStuff.gapogoftVC ){
             //State changes on User joinning a voice channel
 
