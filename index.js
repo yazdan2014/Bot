@@ -61,7 +61,7 @@ client.on('message' , (message) => {
                     client.channels.cache.get(channelID).send(message.attachments.first());
                         message.channel.send(  " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n " + nickname )
                 }
-                    async function moz(){
+                    async function moz(){ 
                      try{
                         await message.react("1️⃣")
                         await message.react("2️⃣")
