@@ -3,7 +3,8 @@ let client = new Discord.Client();
 const config = require('./config.json');
 const embed = new Discord.MessageEmbed()
 let cron = require('node-cron');
-
+let date = new Date()
+ 
 let M111r = 0
 let M112r = 0
 let M111t = 0
@@ -20,10 +21,14 @@ client.on("messageDelete", async (message) => {
     if(message.channel.id === config.onlClassStuff.tc112t){M112t--}
 })
 
-cron.schedule('00 24 * * *' , () => {
-    let anjamDade = ""
-    client.guilds.cache.get(config.allameGuild).members.cache.forEach(r => {if(r.roles.cache.some(r => r.name == "H")){ anjamDade += `${r.nickname}\n`}})
-    if(anjamDade != ""){client.channels.cache.get(config.homeworkStuff.vazitaTakalif).send(anjamDade);}else{client.channels.cache.get(config.homeworkStuff.vazitaTakalif).send("!! همه تکالیف خود را انجام داده بودند")}
+cron.schedule('11 31 * * *' , () => {
+    let anjamDade = "" 
+    client.guilds.cache.get(config.allameGuild).members.cache.forEach(r => {if(r.roles.cache.some(r => r.name != "H")){ anjamNadade += `🔴${r.nickname}\n`}})
+    if(anjamDade != ""){
+        client.channels.cache.get(config.homeworkStuff.vazitaTakalif).send( ": اسامی کسانی که تکلیف خود را ثبت نکردند "+ `\n ${anjamNadade}`)
+    }else{
+        client.channels.cache.get(config.homeworkStuff.vazitaTakalif).send("!! همه تکالیف خود را انجام داده بودند")
+    }
     client.guilds.cache.get(config.allameGuild).roles.cache.find(r => r.name == "H").delete()
     client.guilds.cache.get(config.allameGuild).roles.create({
         data: {
@@ -49,9 +54,9 @@ client.on('message' , (message) => {
                 }
                 
                 function sendToChannel (channelID , subject){
-                    let HRole = message.member.roles.cache.find(r => r.name = "H")
-                    if(!message.member.roles.cache.some(r => r.name = "H")){
-                        message.member.roles.add(HRole)
+                    let HRole = client.guilds.cache.get(config.allameGuild).roles.cache.find(r => r.name = "H")
+                    if(!client.guilds.cache.get(config.allameGuild).members.cache.get(message.author.id).roles.cache.some(r => r.name = "H")){
+                        client.guilds.cache.get(config.allameGuild).members.cache.get(message.author.id).roles.add(HRole)
                     }
                     client.channels.cache.get(channelID).send(message.attachments.first());
                         message.channel.send(  " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n " + nickname )
@@ -94,7 +99,6 @@ client.on('message' , (message) => {
                     if (reaction.emoji.name === '🔟') { sendToChannel(config.homeworkStuff.adabiatC , config.homeworkStuff.adabiat) }
                     
                 }).catch(collected => {
-                    message.reply('تکلیف شما ثبت نشد. بعد از 60 ثانیه گزینه ای انتخاب نشد یا شما پیامتون را انتخاب نکردید');
                 });
             }else{
                 message.delete();
