@@ -21,7 +21,7 @@ client.on("messageDelete", async (message) => {
     if(message.channel.id === config.onlClassStuff.tc112t){M112t--}
 }) 
 
-cron.schedule('00 00 * * *' , () => {
+cron.schedule('43 9 * * *' , () => {
     let anjamNaDade = ""
     client.guilds.cache.get(config.allameGuild).members.cache.forEach(r => {if(r.roles.cache.some(r => r.name != "H")){ anjamNaDade += `🔴${r.nickname}\n`}})
     if(anjamNaDade != ""){
@@ -54,12 +54,11 @@ client.on('message' , (message) => {
                 }
 
                 function sendToChannel (channelID , subject){
-                    let HRole = client.guilds.cache.get(config.allameGuild).roles.cache.find(r => r.name = "H")
-                    if(!client.guilds.cache.get(config.allameGuild).members.cache.get(message.author.id).roles.cache.some(r => r.name = "H")){
-                        client.guilds.cache.get(config.allameGuild).members.cache.get(message.author.id).roles.add(HRole)
-                    }
+                    message.channel.send(  " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n " + nickname )
                     client.channels.cache.get(channelID).send(message.attachments.first());
-                        message.channel.send(  " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n " + nickname )
+                    let HRole = client.guilds.cache.get(config.allameGuild).roles.cache.find(r => r.name == "H")
+                    client.guilds.cache.get(config.allameGuild).members.cache.get(message.author.id).roles.add(HRole.id)
+                        
                 }
                     async function moz(){ 
                      try{
