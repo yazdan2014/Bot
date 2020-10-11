@@ -57,8 +57,9 @@ client.on('message' , (message) => {
                     message.channel.send(  " تکلیف " + "**"+subject+"**"+ " شما ثبت شد " + "\n " + nickname )
                     client.channels.cache.get(channelID).send(message.attachments.first());
                     let HRole = client.guilds.cache.get(config.allameGuild).roles.cache.find(r => r.name == "H")
+                    if(client.guilds.cache.get(config.allameGuild).members.cache.get(message.author.id).roles.cache.some(r => r.name == "H")){
                     client.guilds.cache.get(config.allameGuild).members.cache.get(message.author.id).roles.add(HRole.id)
-                        
+                }
                 }
                     async function moz(){ 
                      try{
